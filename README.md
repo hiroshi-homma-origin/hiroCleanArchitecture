@@ -1,1 +1,1 @@
-# -hiroCleanArchitecture
+# hiroCleanArchitecture
