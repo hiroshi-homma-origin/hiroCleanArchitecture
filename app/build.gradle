@@ -109,6 +109,9 @@ dependencies {
 
     // Third Party Library
     implementation "com.jakewharton.timber:timber:4.7.1"
+
+    // Ktlint
+    ktlint "com.pinterest:ktlint:0.37.1"
 }
 
 kapt { generateStubs = true }
