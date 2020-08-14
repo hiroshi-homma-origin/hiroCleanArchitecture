@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "204735091136",
+    "firebase_url": "https://hiro-sample-firebase-project.firebaseio.com",
+    "project_id": "hiro-sample-firebase-project",
+    "storage_bucket": "hiro-sample-firebase-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204735091136:android:c0a25f7667bad5e819f825",
+        "android_client_info": {
+          "package_name": "com.kotlin.cleanarchitecture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204735091136-ugufrpao65vss1ib3snmbpflll7tbg0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkkmiInnbb9je1gkrRzJ16s3mgQv_KbNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204735091136-ugufrpao65vss1ib3snmbpflll7tbg0u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204735091136:android:7f0c979334a8908419f825",
+        "android_client_info": {
+          "package_name": "com.kotlin.pagecurl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204735091136-ugufrpao65vss1ib3snmbpflll7tbg0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkkmiInnbb9je1gkrRzJ16s3mgQv_KbNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204735091136-ugufrpao65vss1ib3snmbpflll7tbg0u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204735091136:android:92fa8f95a8d89b4e19f825",
+        "android_client_info": {
+          "package_name": "com.kotlin.project.jetpackcompose"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204735091136-ugufrpao65vss1ib3snmbpflll7tbg0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkkmiInnbb9je1gkrRzJ16s3mgQv_KbNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204735091136-ugufrpao65vss1ib3snmbpflll7tbg0u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
