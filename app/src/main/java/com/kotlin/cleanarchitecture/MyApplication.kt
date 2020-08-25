@@ -1,10 +1,12 @@
 package com.kotlin.cleanarchitecture
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
-open class MyApplication : Application() {
+@HiltAndroidApp
+class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(DebugTree())

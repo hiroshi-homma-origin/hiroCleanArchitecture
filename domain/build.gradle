@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -19,9 +19,18 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            buildConfigField "String", "DOMAIN", "\"https://pokeapi.co/\""
+            buildConfigField "Long", "API_READ_TIMEOUT", "120L"
+            buildConfigField "Long", "API_CONNECT_TIMEOUT", "120L"
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "DOMAIN", "\"https://pokeapi.co/\""
+            buildConfigField "Long", "API_READ_TIMEOUT", "120L"
+            buildConfigField "Long", "API_CONNECT_TIMEOUT", "120L"
         }
     }
     compileOptions {
@@ -34,12 +43,14 @@ android {
 }
 
 dependencies {
+    implementation project(':data')
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     // For Billing Service
     implementation "com.android.billingclient:billing:3.0.0"
 
     // For Google Play Services
-    implementation 'com.google.android.gms:play-services-base:17.3.0'
+    implementation 'com.google.android.gms:play-services-base:17.4.0'
     implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
     implementation 'com.google.android.gms:play-services-analytics:17.0.0'
@@ -52,6 +63,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-config:19.2.0'
     implementation 'com.google.firebase:firebase-iid:20.2.4'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$google_hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$google_hilt"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$androidx_hilt"
+    kapt "androidx.hilt:hilt-compiler:$androidx_hilt"
+    annotationProcessor "androidx.hilt:hilt-compiler:$androidx_hilt"
 
     // Network
     implementation 'com.squareup.okhttp3:logging-interceptor:4.7.0'

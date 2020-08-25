@@ -1,11 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = '1.4.0-rc'
-    ext.compose_version = '0.1.0-dev16'
+    ext.kotlin_version = '1.4.0'
+    ext.compose_version = '0.1.0-dev17'
     ext.room_version = "2.2.5"
     ext.work_version = "2.4.0"
     ext.retrofitVersion = "2.9.0"
     ext.moshi = "1.9.3"
+    ext.google_hilt = "2.28.3-alpha"
+    ext.androidx_hilt = "1.0.0-SNAPSHOT"
 
     repositories {
         jcenter()
@@ -22,6 +24,7 @@ buildscript {
         classpath 'com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta09'
         classpath 'com.apollographql.apollo:apollo-gradle-plugin:2.2.1'
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.2.0'
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$google_hilt"
     }
 }
 
@@ -31,8 +34,9 @@ allprojects {
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
-        maven { url 'http://dl.bintray.com/apollographql/android'}
+        maven { url 'http://dl.bintray.com/apollographql/android' }
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+        maven { url "https://androidx.dev/snapshots/builds/6777889/artifacts/repository/" }
     }
 }
 
