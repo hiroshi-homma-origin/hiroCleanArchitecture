@@ -16,8 +16,6 @@ class RootViewModel @ViewModelInject constructor(
 
     val liveData: MutableLiveData<List<Pokemon>?> = MutableLiveData()
 
-    fun getData() = listOf("test1", "test2", "test3")
-
     fun fetchData() {
         viewModelScope.launch(Dispatchers.Default) {
             liveData.postValue(useCase.getList()?.results)

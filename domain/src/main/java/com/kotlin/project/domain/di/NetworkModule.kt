@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
 internal object NetworkModule {
     @Provides
     fun providePokemonApi(): PokemonApi {
-        val moshi = Moshi.Builder()
+        val m = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
         val httpClient = OkHttpClient.Builder()
@@ -31,7 +31,7 @@ internal object NetworkModule {
             .build()
         return Retrofit.Builder()
             .baseUrl(BuildConfig.DOMAIN)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(MoshiConverterFactory.create(m))
             .client(httpClient)
             .build()
             .create(PokemonApi::class.java)
