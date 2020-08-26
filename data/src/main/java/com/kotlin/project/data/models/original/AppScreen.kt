@@ -1,4 +1,4 @@
-package com.kotlin.project.data.models
+package com.kotlin.project.data.models.original
 
 enum class AppScreen(val displayNameString: String) {
     Screen1("ホーム"),

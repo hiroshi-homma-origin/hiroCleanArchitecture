@@ -15,7 +15,7 @@ import com.kotlin.cleanarchitecture.presentation.common.BottomNavigationScreen
 import com.kotlin.cleanarchitecture.presentation.common.DrawerContentsScreen
 import com.kotlin.cleanarchitecture.presentation.common.FloatingActionButtonScreen
 import com.kotlin.cleanarchitecture.presentation.common.TopAppBarScreen
-import com.kotlin.cleanarchitecture.presentation.pokelist.PokemonList
+import com.kotlin.cleanarchitecture.presentation.home.HomeScreen
 import com.kotlin.cleanarchitecture.presentation.root.RootViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,7 +26,6 @@ class RootActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.hide()
         rootViewModel.fetchData()
         observe()
     }
@@ -35,34 +34,24 @@ class RootActivity : AppCompatActivity() {
         rootViewModel.run {
             liveData.nonNullObserve {
                 setContent {
-                    ScaffoldScreen()
+                    RootScreen()
                 }
             }
         }
     }
 
     @Composable
-    fun ScaffoldScreen() {
+    fun RootScreen() {
         val scaffoldState = rememberScaffoldState()
         val bottomIndex = remember { mutableStateOf(0) }
         Scaffold(
             scaffoldState = scaffoldState,
-            topBar = {
-                TopAppBarScreen(name = "preview", showBack = false, scaffoldState)
-            },
+            topBar = { TopAppBarScreen(showBack = false, scaffoldState) },
             floatingActionButtonPosition = FabPosition.End,
-            floatingActionButton = {
-                FloatingActionButtonScreen(scaffoldState)
-            },
-            drawerContent = {
-                DrawerContentsScreen(scaffoldState)
-            },
-            bodyContent = {
-                PokemonList(rootViewModel)
-            },
-            bottomBar = {
-                BottomNavigationScreen(scaffoldState, bottomIndex)
-            }
+            floatingActionButton = { FloatingActionButtonScreen(scaffoldState) },
+            drawerContent = { DrawerContentsScreen(scaffoldState) },
+            bodyContent = { HomeScreen(rootViewModel) },
+            bottomBar = { BottomNavigationScreen(scaffoldState, bottomIndex) }
         )
     }
 }

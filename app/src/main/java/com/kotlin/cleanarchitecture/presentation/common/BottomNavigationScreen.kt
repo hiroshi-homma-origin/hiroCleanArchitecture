@@ -17,35 +17,37 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kotlin.project.data.models.AppScreen
+import com.kotlin.project.data.models.original.AppScreen
 
 @Composable
 fun BottomNavigationScreen(scaffoldState: ScaffoldState, bottomIndex: MutableState<Int>) {
     BottomNavigation(modifier = Modifier.padding(0.dp)) {
         AppScreen.values().mapIndexed { index, list ->
-            BottomNavigationItem(
-                icon = {
-                    Column(
-                        horizontalGravity = Alignment.CenterHorizontally
-                    ) {
-                        Icon(asset = Icons.Filled.Home)
-                        if (bottomIndex.value == index) {
-                            Text(
-                                text = list.displayNameString,
-                                style = TextStyle(
-                                    fontFamily = FontFamily.Monospace,
-                                    fontSize = 8.sp
+            if (index < 5) {
+                BottomNavigationItem(
+                    icon = {
+                        Column(
+                            horizontalGravity = Alignment.CenterHorizontally
+                        ) {
+                            Icon(asset = Icons.Filled.Home)
+                            if (bottomIndex.value == index) {
+                                Text(
+                                    text = list.displayNameString,
+                                    style = TextStyle(
+                                        fontFamily = FontFamily.Monospace,
+                                        fontSize = 8.sp
+                                    )
                                 )
-                            )
+                            }
                         }
-                    }
-                },
-                selected = bottomIndex.value == index,
-                onSelect = {
-                    bottomIndex.value = index
-                },
-                alwaysShowLabels = false
-            )
+                    },
+                    selected = bottomIndex.value == index,
+                    onSelect = {
+                        bottomIndex.value = index
+                    },
+                    alwaysShowLabels = false
+                )
+            }
         }
     }
 }

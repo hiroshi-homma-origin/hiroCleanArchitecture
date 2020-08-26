@@ -13,7 +13,6 @@ import timber.log.Timber
 
 @Composable
 fun TopAppBarScreen(
-    name: String,
     showBack: Boolean,
     scaffoldState: ScaffoldState
 ) {
@@ -29,6 +28,6 @@ fun TopAppBarScreen(
                 Icon(navigationIcon)
             }
         },
-        title = { Text("Screen $name") }
+        title = { Text("PokeDex") }
     )
 }

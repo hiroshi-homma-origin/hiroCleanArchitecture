@@ -21,14 +21,14 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            buildConfigField "String", "DOMAIN", "\"https://pokeapi.co/\""
+            buildConfigField "String", "DOMAIN", "\"http://tk2-246-32569.vs.sakura.ne.jp/\""
             buildConfigField "Long", "API_READ_TIMEOUT", "120L"
             buildConfigField "Long", "API_CONNECT_TIMEOUT", "120L"
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "DOMAIN", "\"https://pokeapi.co/\""
+            buildConfigField "String", "DOMAIN", "\"http://tk2-246-32569.vs.sakura.ne.jp/\""
             buildConfigField "Long", "API_READ_TIMEOUT", "120L"
             buildConfigField "Long", "API_CONNECT_TIMEOUT", "120L"
         }
@@ -46,6 +46,11 @@ dependencies {
     implementation project(':data')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Paging
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
+
     // For Billing Service
     implementation "com.android.billingclient:billing:3.0.0"
 

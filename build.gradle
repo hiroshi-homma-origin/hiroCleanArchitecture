@@ -8,6 +8,7 @@ buildscript {
     ext.moshi = "1.9.3"
     ext.google_hilt = "2.28.3-alpha"
     ext.androidx_hilt = "1.0.0-SNAPSHOT"
+    ext.paging_version = '2.1.2'
 
     repositories {
         jcenter()
