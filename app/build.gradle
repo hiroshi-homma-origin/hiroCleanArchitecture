@@ -119,6 +119,8 @@ dependencies {
 
     // Third Party Library
     implementation "com.jakewharton.timber:timber:4.7.1"
+    implementation "com.github.bumptech.glide:glide:4.11.0"
+    kapt "com.github.bumptech.glide:compiler:4.11.0"
 
     // Ktlint
     ktlint "com.pinterest:ktlint:0.37.1"

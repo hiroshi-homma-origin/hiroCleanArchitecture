@@ -1,9 +1,10 @@
 package com.kotlin.project.domain.api
 
-import com.kotlin.project.data.models.original.response.PokeListResponse
+import com.kotlin.project.data.model.response.PokeList
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 internal interface PokemonApi {
-    @GET("pokelist/pokedex0.json")
-    suspend fun getPokemonList1(): List<PokeListResponse>
+    @GET("pokelist/{jsonName}")
+    suspend fun getPokemonList(@Path("jsonName") jsonName: String?): List<PokeList>
 }

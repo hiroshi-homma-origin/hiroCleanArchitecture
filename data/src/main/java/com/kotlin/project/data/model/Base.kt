@@ -1,4 +1,4 @@
-package com.kotlin.project.data.models.original
+package com.kotlin.project.data.model
 
 import com.squareup.moshi.Json
 

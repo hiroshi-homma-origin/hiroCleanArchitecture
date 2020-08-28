@@ -1,4 +1,4 @@
-package com.kotlin.project.data.models.original
+package com.kotlin.project.data.model
 
 data class Name (
     var english: String = "",

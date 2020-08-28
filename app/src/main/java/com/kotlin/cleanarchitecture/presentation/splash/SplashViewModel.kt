@@ -1,4 +1,4 @@
-package com.kotlin.cleanarchitecture.presentation.root
+package com.kotlin.cleanarchitecture.presentation.splash
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
@@ -9,10 +9,10 @@ import com.kotlin.project.domain.usecase.GetPokemonListUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RootViewModel @ViewModelInject constructor(
+class SplashViewModel @ViewModelInject constructor(
     @PokemonListUseCase private val useCase: GetPokemonListUseCase
 ) : ViewModel() {
-    fun retryData() {
+    fun fetchData() {
         val jsonNumber = 0
         viewModelScope.launch(Dispatchers.Default) {
             pokeListLiveData.postValue(useCase.getList("pokedex$jsonNumber.json"))

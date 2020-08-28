@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.kotlin.project.data.models.original.AppScreen
+import com.kotlin.project.data.model.AppScreen
 import timber.log.Timber
 
 @Composable

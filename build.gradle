@@ -9,16 +9,18 @@ buildscript {
     ext.google_hilt = "2.28.3-alpha"
     ext.androidx_hilt = "1.0.0-SNAPSHOT"
     ext.paging_version = '2.1.2'
+    ext.glide_version = "0.3.8"
 
     repositories {
         jcenter()
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.0-alpha07'
+        classpath 'com.android.tools.build:gradle:4.2.0-alpha08'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.3.3'
         classpath "gradle.plugin.com.github.konifar.gradle:plugin:0.3.3"

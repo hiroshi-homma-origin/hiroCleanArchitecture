@@ -13,54 +13,79 @@ import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.kotlin.cleanarchitecture.presentation.root.RootViewModel
+import com.kotlin.cleanarchitecture.presentation.common.GlideImage
+import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
+import com.kotlin.project.data.model.response.PokeList
 import timber.log.Timber
 
 @Composable
-fun HomeScreen(rootViewModel: RootViewModel) {
+fun HomeScreen() {
     ScrollableColumn(
         modifier = Modifier.padding(bottom = 60.dp)
     ) {
-        rootViewModel.liveData.value?.mapIndexed { index, pokemon ->
+        pokeListLiveData.value?.mapIndexed { index, pokemon ->
+            val number = index.plus(1).toString().padStart(3, '0')
             Card(
                 shape = RoundedCornerShape(4.dp),
                 modifier = Modifier.padding(4.dp) +
-                        Modifier.fillMaxWidth() +
-                        Modifier.preferredHeight(100.dp) +
-                        Modifier.clickable(
-                            onClick = {
-                                Timber.d("check_click:$index")
-                            }
-                        )
+                    Modifier.fillMaxWidth() +
+                    Modifier.preferredHeight(100.dp) +
+                    Modifier.clickable(
+                        onClick = {
+                            Timber.d("check_click:$index")
+                        }
+                    )
             ) {
-                Column(
-                    modifier = Modifier.padding(4.dp)
-                ) {
-                    Text(pokemon.name.japanese)
-                    Row(
-                        modifier = Modifier.padding(bottom = 8.dp)
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(end = 8.dp)
-                        ) {
-                            Text("HP:${pokemon.base.hp}")
-                            Text("Attack:${pokemon.base.attack}")
-                        }
-                        Column(
-                            modifier = Modifier.padding(end = 8.dp)
-                        ) {
-                            Text("Defense:${pokemon.base.defense}")
-                            Text("Speed:${pokemon.base.speed}")
-                        }
-                        Column(
-                            modifier = Modifier.padding(end = 8.dp)
-                        ) {
-                            Text("Sp. Attack:${pokemon.base.spAttack}")
-                            Text("Sp. Defense:${pokemon.base.spDefense}")
-                        }
-                    }
-                }
+                ImageAndContentDivideScreen(number, pokemon)
             }
+        }
+    }
+}
+
+@Composable
+fun ImageAndContentDivideScreen(number: String, pokemon: PokeList) {
+    Row {
+        GlideImage(model = "http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            NumberAndNameScreen(number, pokemon)
+            StatusScreen(pokemon)
+        }
+    }
+}
+
+@Composable
+fun NumberAndNameScreen(number: String, pokemon: PokeList) {
+    Row(
+        modifier = Modifier.padding(bottom = 8.dp)
+    ) {
+        Text("$number : ${pokemon.name.japanese}")
+    }
+}
+
+@Composable
+fun StatusScreen(pokemon: PokeList) {
+    Row(
+        modifier = Modifier.padding(bottom = 8.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(end = 8.dp)
+        ) {
+            Text("HP:${pokemon.base.hp}")
+            Text("Attack:${pokemon.base.attack}")
+        }
+        Column(
+            modifier = Modifier.padding(end = 8.dp)
+        ) {
+            Text("Defense:${pokemon.base.defense}")
+            Text("Speed:${pokemon.base.speed}")
+        }
+        Column(
+            modifier = Modifier.padding(end = 8.dp)
+        ) {
+            Text("Sp. Attack:${pokemon.base.spAttack}")
+            Text("Sp. Defense:${pokemon.base.spDefense}")
         }
     }
 }
