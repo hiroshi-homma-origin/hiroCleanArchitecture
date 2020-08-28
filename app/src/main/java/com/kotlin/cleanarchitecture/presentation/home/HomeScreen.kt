@@ -1,10 +1,13 @@
 package com.kotlin.cleanarchitecture.presentation.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.preferredHeight
@@ -12,29 +15,39 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
+import com.kotlin.cleanarchitecture.R
 import com.kotlin.cleanarchitecture.presentation.common.GlideImage
+import com.kotlin.cleanarchitecture.state.PokeState
 import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
 import com.kotlin.project.data.model.response.PokeList
 import timber.log.Timber
 
 @Composable
 fun HomeScreen() {
+    Image(
+        imageResource(id = R.drawable.bg1),
+        modifier = Modifier.fillMaxWidth() + Modifier.fillMaxHeight() +
+                Modifier.background(Color(0xFF363636))
+    )
     ScrollableColumn(
         modifier = Modifier.padding(bottom = 60.dp)
     ) {
         pokeListLiveData.value?.mapIndexed { index, pokemon ->
-            val number = index.plus(1).toString().padStart(3, '0')
+            val number = index.plus((PokeState.number * 20) + 1).toString().padStart(3, '0')
             Card(
-                shape = RoundedCornerShape(4.dp),
-                modifier = Modifier.padding(4.dp) +
-                    Modifier.fillMaxWidth() +
-                    Modifier.preferredHeight(100.dp) +
-                    Modifier.clickable(
-                        onClick = {
-                            Timber.d("check_click:$index")
-                        }
-                    )
+                modifier = Modifier.padding(12.dp) +
+                        Modifier.fillMaxWidth() +
+                        Modifier.preferredHeight(90.dp) +
+                        Modifier.clickable(
+                            onClick = {
+                                Timber.d("check_click:$index")
+                            }
+                        ),
+                shape = RoundedCornerShape(2.dp),
+                backgroundColor = Color(0xBBFFFFFF)
             ) {
                 ImageAndContentDivideScreen(number, pokemon)
             }
@@ -44,10 +57,12 @@ fun HomeScreen() {
 
 @Composable
 fun ImageAndContentDivideScreen(number: String, pokemon: PokeList) {
-    Row {
-        GlideImage(model = "http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
+    Row(
+        modifier = Modifier.padding(8.dp)
+    ) {
+        GlideImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(6.dp)
         ) {
             NumberAndNameScreen(number, pokemon)
             StatusScreen(pokemon)
@@ -58,7 +73,7 @@ fun ImageAndContentDivideScreen(number: String, pokemon: PokeList) {
 @Composable
 fun NumberAndNameScreen(number: String, pokemon: PokeList) {
     Row(
-        modifier = Modifier.padding(bottom = 8.dp)
+        modifier = Modifier.padding(bottom = 4.dp)
     ) {
         Text("$number : ${pokemon.name.japanese}")
     }
@@ -73,13 +88,13 @@ fun StatusScreen(pokemon: PokeList) {
             modifier = Modifier.padding(end = 8.dp)
         ) {
             Text("HP:${pokemon.base.hp}")
-            Text("Attack:${pokemon.base.attack}")
+            Text("Speed:${pokemon.base.speed}")
         }
         Column(
             modifier = Modifier.padding(end = 8.dp)
         ) {
+            Text("Attack:${pokemon.base.attack}")
             Text("Defense:${pokemon.base.defense}")
-            Text("Speed:${pokemon.base.speed}")
         }
         Column(
             modifier = Modifier.padding(end = 8.dp)

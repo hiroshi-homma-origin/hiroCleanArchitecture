@@ -32,8 +32,8 @@ fun GlideImage(
     customize: RequestBuilder<Bitmap>.() -> RequestBuilder<Bitmap> = { this }
 ) {
     WithConstraints {
-        val image = stateFor <ImageAsset?> (null) { null }
-        val drawable = stateFor<Drawable?> (null) { null }
+        val image = stateFor<ImageAsset?>(null) { null }
+        val drawable = stateFor<Drawable?>(null) { null }
         val context = ContextAmbient.current
 
         onPreCommit(model) {
@@ -46,7 +46,10 @@ fun GlideImage(
                         drawable.value = placeholder
                     }
 
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap>?
+                    ) {
                         FrameManager.ensureStarted()
                         image.value = resource.asImageAsset()
                         onImageReady?.invoke()

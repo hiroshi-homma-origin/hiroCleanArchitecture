@@ -19,11 +19,9 @@ class RootActivity : AppCompatActivity() {
     }
 
     private fun observe() {
-        rootViewModel.run {
-            pokeListLiveData.nonNullObserve {
-                setContent {
-                    RootScreen(this)
-                }
+        pokeListLiveData.nonNullObserve {
+            setContent {
+                RootScreen(rootViewModel)
             }
         }
     }

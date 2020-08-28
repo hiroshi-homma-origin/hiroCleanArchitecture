@@ -5,4 +5,5 @@ import com.kotlin.project.data.model.response.PokeList
 
 object PokeState {
     val pokeListLiveData: MutableLiveData<List<PokeList>> = MutableLiveData()
+    var number: Int = 0
 }

@@ -21,7 +21,7 @@ fun FloatingActionButtonScreen(scaffoldState: ScaffoldState) {
     ) {
         Image(
             imageResource(id = R.drawable.monster_ball),
-            modifier = Modifier.size(56.dp)
+            modifier = Modifier.size(58.dp)
         )
     }
 }
