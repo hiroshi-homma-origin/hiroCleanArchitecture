@@ -35,7 +35,6 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
                         Modifier.preferredHeight(60.dp) +
                         Modifier.clickable(
                             onClick = {
-                                Timber.d("check_click:${list.displayNameString}")
                                 scaffoldState.drawerState.close()
                             }
                         )

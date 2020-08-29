@@ -9,14 +9,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.kotlin.cleanarchitecture.R
+import com.kotlin.cleanarchitecture.state.PokeState.rootViewModel
 import timber.log.Timber
 
 @Composable
 fun FloatingActionButtonScreen(scaffoldState: ScaffoldState) {
     FloatingActionButton(
         onClick = {
-            Timber.d("check_root_click:${scaffoldState.drawerState.value}")
-            scaffoldState.drawerState.open()
+//            scaffoldState.drawerState.open()
+            rootViewModel.retryData()
         }
     ) {
         Image(

@@ -12,7 +12,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.kotlin.pagecurl"
+        applicationId "com.kotlin.cleanarchitecture"
         minSdkVersion 24
         targetSdkVersion 30
         multiDexEnabled true

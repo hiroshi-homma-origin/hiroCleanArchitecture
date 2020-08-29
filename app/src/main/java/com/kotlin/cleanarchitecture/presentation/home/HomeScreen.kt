@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.imageResource
@@ -35,7 +37,9 @@ fun HomeScreen() {
     ScrollableColumn(
         modifier = Modifier.padding(bottom = 60.dp)
     ) {
-        pokeListLiveData.value?.mapIndexed { index, pokemon ->
+        val pokeList by pokeListLiveData.observeAsState()
+        Timber.d("check_data:$pokeList")
+        pokeList?.mapIndexed { index, pokemon ->
             val number = index.plus((PokeState.number * 20) + 1).toString().padStart(3, '0')
             Card(
                 modifier = Modifier.padding(12.dp) +
@@ -43,7 +47,7 @@ fun HomeScreen() {
                         Modifier.preferredHeight(90.dp) +
                         Modifier.clickable(
                             onClick = {
-                                Timber.d("check_click:$index")
+                                // Todo()
                             }
                         ),
                 shape = RoundedCornerShape(2.dp),

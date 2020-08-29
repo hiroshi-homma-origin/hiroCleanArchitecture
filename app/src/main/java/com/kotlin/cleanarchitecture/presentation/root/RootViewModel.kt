@@ -3,6 +3,7 @@ package com.kotlin.cleanarchitecture.presentation.root
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kotlin.cleanarchitecture.state.PokeState.number
 import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
 import com.kotlin.project.domain.di.qualifier.PokemonListUseCase
 import com.kotlin.project.domain.usecase.GetPokemonListUseCase
@@ -13,9 +14,9 @@ class RootViewModel @ViewModelInject constructor(
     @PokemonListUseCase private val useCase: GetPokemonListUseCase
 ) : ViewModel() {
     fun retryData() {
-        val jsonNumber = 0
+        number++
         viewModelScope.launch(Dispatchers.Default) {
-            pokeListLiveData.postValue(useCase.getList("pokedex$jsonNumber.json"))
+            pokeListLiveData.postValue(useCase.getList("pokedex$number.json"))
         }
     }
 }

@@ -9,14 +9,12 @@ import com.kotlin.project.domain.di.qualifier.PokemonListUseCase
 import com.kotlin.project.domain.usecase.GetPokemonListUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class SplashViewModel @ViewModelInject constructor(
     @PokemonListUseCase private val useCase: GetPokemonListUseCase
 ) : ViewModel() {
     fun fetchData() {
         viewModelScope.launch(Dispatchers.Default) {
-            Timber.d("check_data:${number}")
             pokeListLiveData.postValue(useCase.getList("pokedex${number}.json"))
         }
     }

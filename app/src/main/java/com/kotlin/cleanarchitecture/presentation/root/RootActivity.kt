@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
-import com.kotlin.cleanarchitecture.ext.nonNullObserve
-import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
+import com.kotlin.cleanarchitecture.state.PokeState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,14 +14,7 @@ class RootActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        observe()
-    }
-
-    private fun observe() {
-        pokeListLiveData.nonNullObserve {
-            setContent {
-                RootScreen(rootViewModel)
-            }
-        }
+        PokeState.rootViewModel = rootViewModel
+        setContent { RootScreen() }
     }
 }

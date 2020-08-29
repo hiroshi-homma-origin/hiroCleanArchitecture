@@ -13,7 +13,7 @@ import com.kotlin.cleanarchitecture.presentation.common.TopAppBarScreen
 import com.kotlin.cleanarchitecture.presentation.home.HomeScreen
 
 @Composable
-fun RootScreen(rootViewModel: RootViewModel) {
+fun RootScreen() {
     val scaffoldState = rememberScaffoldState()
     val bottomIndex = remember { mutableStateOf(0) }
     Scaffold(

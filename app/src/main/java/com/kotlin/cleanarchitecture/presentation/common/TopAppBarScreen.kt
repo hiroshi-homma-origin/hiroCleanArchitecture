@@ -9,6 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
+import com.kotlin.cleanarchitecture.R
 import timber.log.Timber
 
 @Composable
@@ -21,13 +22,14 @@ fun TopAppBarScreen(
         navigationIcon = {
             IconButton(
                 onClick = {
-                    Timber.d("check_top_app_bar_click")
                     scaffoldState.drawerState.open()
                 }
             ) {
                 Icon(navigationIcon)
             }
         },
-        title = { Text("PokeDex") }
+        title = {
+            GlideImage(model = R.drawable.pokedex_logo)
+        }
     )
 }

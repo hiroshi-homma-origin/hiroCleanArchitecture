@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.setContent
-import com.kotlin.cleanarchitecture.ext.nonNullObserve
 import com.kotlin.cleanarchitecture.presentation.root.RootActivity
 import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,16 +21,16 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         splashViewModel.fetchData()
-        observe()
         setContent {
-            SplashScreen()
+            ObservePokeList()
         }
     }
 
-    private fun observe() {
-        pokeListLiveData.nonNullObserve {
+    @Composable
+    fun ObservePokeList() {
+        val list by pokeListLiveData.observeAsState()
+        list?.let {
             val intent = Intent(this, RootActivity::class.java)
-            Timber.d("Start_Root_Activity")
             startActivity(intent)
             finish()
         }
