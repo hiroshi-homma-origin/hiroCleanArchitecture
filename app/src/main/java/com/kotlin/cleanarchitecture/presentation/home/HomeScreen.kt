@@ -18,13 +18,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.globalPosition
+import androidx.compose.ui.onPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.kotlin.cleanarchitecture.R
-import com.kotlin.cleanarchitecture.presentation.common.GlideImage
 import com.kotlin.cleanarchitecture.state.PokeState
+import com.kotlin.cleanarchitecture.state.PokeState.isFloatingActionButton
 import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
 import com.kotlin.project.data.model.response.PokeList
+import dev.chrisbanes.accompanist.coil.CoilImage
 import timber.log.Timber
 
 @Composable
@@ -35,10 +38,16 @@ fun HomeScreen() {
                 Modifier.background(Color(0xFF363636))
     )
     ScrollableColumn(
-        modifier = Modifier.padding(bottom = 60.dp)
+        modifier = Modifier.padding(bottom = 60.dp) +
+                Modifier.onPositioned {
+                    if (it.globalPosition.y < 220.0f) {
+                        isFloatingActionButton.postValue(false)
+                    } else {
+                        isFloatingActionButton.postValue(true)
+                    }
+                }
     ) {
         val pokeList by pokeListLiveData.observeAsState()
-        Timber.d("check_data:$pokeList")
         pokeList?.mapIndexed { index, pokemon ->
             val number = index.plus((PokeState.number * 20) + 1).toString().padStart(3, '0')
             Card(
@@ -64,7 +73,7 @@ fun ImageAndContentDivideScreen(number: String, pokemon: PokeList) {
     Row(
         modifier = Modifier.padding(8.dp)
     ) {
-        GlideImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
+        CoilImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
         Column(
             modifier = Modifier.padding(6.dp)
         ) {

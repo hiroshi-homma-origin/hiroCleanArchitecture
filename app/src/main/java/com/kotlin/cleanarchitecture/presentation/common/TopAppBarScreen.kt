@@ -1,7 +1,6 @@
 package com.kotlin.cleanarchitecture.presentation.common
 
 import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
 import androidx.compose.material.IconButton
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.TopAppBar
@@ -10,7 +9,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import com.kotlin.cleanarchitecture.R
-import timber.log.Timber
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun TopAppBarScreen(
@@ -29,7 +28,7 @@ fun TopAppBarScreen(
             }
         },
         title = {
-            GlideImage(model = R.drawable.pokedex_logo)
+            CoilImage(R.drawable.pokedex_logo)
         }
     )
 }

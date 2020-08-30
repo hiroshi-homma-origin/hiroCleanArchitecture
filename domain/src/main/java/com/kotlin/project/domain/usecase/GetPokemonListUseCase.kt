@@ -17,11 +17,9 @@ class GetPokemonListUseCaseImpl @Inject constructor(
             getPokemonListRepository.getPokemonList(jsonName)
         }.fold(
             onSuccess = {
-                Timber.d("check_results_onSuccess:${it[0].base}")
                 return it
             },
             onFailure = {
-                Timber.d("check_results_onFailure:${it}")
                 return listOf()
             }
         )
