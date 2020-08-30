@@ -20,7 +20,6 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        splashViewModel.fetchData()
         setContent {
             ObservePokeList()
         }
@@ -33,6 +32,8 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this, RootActivity::class.java)
             startActivity(intent)
             finish()
+        } ?: run {
+            splashViewModel.fetchData()
         }
     }
 }
