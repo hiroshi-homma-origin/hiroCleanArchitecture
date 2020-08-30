@@ -16,8 +16,9 @@ class SplashViewModel @ViewModelInject constructor(
 ) : ViewModel() {
     fun fetchData() {
         isFloatingActionButton.postValue(true)
+        number.postValue(0)
         viewModelScope.launch(Dispatchers.Default) {
-            pokeListLiveData.postValue(useCase.getList("pokedex$number.json"))
+            pokeListLiveData.postValue(useCase.getList("pokedex0.json"))
         }
     }
 }

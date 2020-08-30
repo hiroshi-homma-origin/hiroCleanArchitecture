@@ -8,10 +8,8 @@ object PokeState {
     // LiveData
     val pokeListLiveData: MutableLiveData<List<PokeList>> = MutableLiveData()
     val isFloatingActionButton: MutableLiveData<Boolean> = MutableLiveData()
+    var number: MutableLiveData<Int> = MutableLiveData()
 
     // ViewModel
     lateinit var rootViewModel: RootViewModel
-
-    // Variable
-    var number: Int = 0
 }

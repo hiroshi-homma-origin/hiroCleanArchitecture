@@ -23,8 +23,8 @@ import androidx.compose.ui.onPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.kotlin.cleanarchitecture.R
-import com.kotlin.cleanarchitecture.state.PokeState
 import com.kotlin.cleanarchitecture.state.PokeState.isFloatingActionButton
+import com.kotlin.cleanarchitecture.state.PokeState.number
 import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
 import com.kotlin.project.data.model.response.PokeList
 import dev.chrisbanes.accompanist.coil.CoilImage
@@ -48,7 +48,7 @@ fun HomeScreen() {
     ) {
         val pokeList by pokeListLiveData.observeAsState()
         pokeList?.mapIndexed { index, pokemon ->
-            val number = index.plus((PokeState.number * 20) + 1).toString().padStart(3, '0')
+            val number = index.plus((number.value!! * 20) + 1).toString().padStart(3, '0')
             Card(
                 modifier = Modifier.padding(12.dp) +
                     Modifier.fillMaxWidth() +

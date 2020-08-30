@@ -24,7 +24,7 @@ fun FloatingActionButtonScreen(scaffoldState: ScaffoldState) {
         // Left (Prev)
         FloatingActionButton(
             onClick = {
-                if (number > 0) rootViewModel.prevData()
+                if (number.value!! > 0) rootViewModel.prevData()
             }
         ) {
             Image(
@@ -36,7 +36,7 @@ fun FloatingActionButtonScreen(scaffoldState: ScaffoldState) {
         // Right (Next)
         FloatingActionButton(
             onClick = {
-                if (number < 44) rootViewModel.nextData()
+                if (number.value!! < 44) rootViewModel.nextData()
             }
         ) {
             Image(
