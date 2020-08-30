@@ -1,7 +1,6 @@
 package com.kotlin.cleanarchitecture.presentation.common
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,7 +9,6 @@ import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.ScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.kotlin.cleanarchitecture.R
@@ -26,7 +24,7 @@ fun FloatingActionButtonScreen(scaffoldState: ScaffoldState) {
         // Left (Prev)
         FloatingActionButton(
             onClick = {
-                if(number > 0) rootViewModel.prevData()
+                if (number > 0) rootViewModel.prevData()
             }
         ) {
             Image(
@@ -38,7 +36,7 @@ fun FloatingActionButtonScreen(scaffoldState: ScaffoldState) {
         // Right (Next)
         FloatingActionButton(
             onClick = {
-                if(number < 44) rootViewModel.nextData()
+                if (number < 44) rootViewModel.nextData()
             }
         ) {
             Image(

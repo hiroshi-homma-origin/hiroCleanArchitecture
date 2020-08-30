@@ -28,37 +28,36 @@ import com.kotlin.cleanarchitecture.state.PokeState.isFloatingActionButton
 import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
 import com.kotlin.project.data.model.response.PokeList
 import dev.chrisbanes.accompanist.coil.CoilImage
-import timber.log.Timber
 
 @Composable
 fun HomeScreen() {
     Image(
         imageResource(id = R.drawable.bg1),
         modifier = Modifier.fillMaxWidth() + Modifier.fillMaxHeight() +
-                Modifier.background(Color(0xFF363636))
+            Modifier.background(Color(0xFF363636))
     )
     ScrollableColumn(
         modifier = Modifier.padding(bottom = 60.dp) +
-                Modifier.onPositioned {
-                    if (it.globalPosition.y < 220.0f) {
-                        isFloatingActionButton.postValue(false)
-                    } else {
-                        isFloatingActionButton.postValue(true)
-                    }
+            Modifier.onPositioned {
+                if (it.globalPosition.y < 220.0f) {
+                    isFloatingActionButton.postValue(false)
+                } else {
+                    isFloatingActionButton.postValue(true)
                 }
+            }
     ) {
         val pokeList by pokeListLiveData.observeAsState()
         pokeList?.mapIndexed { index, pokemon ->
             val number = index.plus((PokeState.number * 20) + 1).toString().padStart(3, '0')
             Card(
                 modifier = Modifier.padding(12.dp) +
-                        Modifier.fillMaxWidth() +
-                        Modifier.preferredHeight(90.dp) +
-                        Modifier.clickable(
-                            onClick = {
-                                // Todo()
-                            }
-                        ),
+                    Modifier.fillMaxWidth() +
+                    Modifier.preferredHeight(90.dp) +
+                    Modifier.clickable(
+                        onClick = {
+                            // Todo()
+                        }
+                    ),
                 shape = RoundedCornerShape(2.dp),
                 backgroundColor = Color(0xBBFFFFFF)
             ) {

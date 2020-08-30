@@ -14,7 +14,6 @@ import com.kotlin.cleanarchitecture.presentation.common.FloatingActionButtonScre
 import com.kotlin.cleanarchitecture.presentation.common.TopAppBarScreen
 import com.kotlin.cleanarchitecture.presentation.home.HomeScreen
 import com.kotlin.cleanarchitecture.state.PokeState.isFloatingActionButton
-import timber.log.Timber
 
 @Composable
 fun RootScreen() {

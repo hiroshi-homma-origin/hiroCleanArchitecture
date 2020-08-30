@@ -15,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.kotlin.project.data.model.AppScreen
-import timber.log.Timber
 
 @Composable
 fun DrawerContentsScreen(scaffoldState: ScaffoldState) {

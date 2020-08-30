@@ -11,7 +11,6 @@ import androidx.compose.ui.platform.setContent
 import com.kotlin.cleanarchitecture.presentation.root.RootActivity
 import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
