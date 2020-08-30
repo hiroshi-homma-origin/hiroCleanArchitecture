@@ -3,6 +3,7 @@ package com.kotlin.cleanarchitecture.presentation.splash
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kotlin.cleanarchitecture.state.PokeState.InitialNumber
 import com.kotlin.cleanarchitecture.state.PokeState.isFloatingActionButton
 import com.kotlin.cleanarchitecture.state.PokeState.number
 import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData

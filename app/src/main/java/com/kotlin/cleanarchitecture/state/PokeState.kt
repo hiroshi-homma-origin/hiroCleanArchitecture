@@ -12,4 +12,7 @@ object PokeState {
 
     // ViewModel
     lateinit var rootViewModel: RootViewModel
+
+    // Variable
+    const val InitialNumber = 0
 }

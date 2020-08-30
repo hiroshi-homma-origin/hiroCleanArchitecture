@@ -17,14 +17,14 @@ class RootViewModel @ViewModelInject constructor(
         val n = number.value?.minus(1)
         number.postValue(n)
         viewModelScope.launch(Dispatchers.Default) {
-            pokeListLiveData.postValue(useCase.getList("pokedex${number.value}.json"))
+            pokeListLiveData.postValue(useCase.getList("pokedex$n.json"))
         }
     }
     fun nextData() {
         val n = number.value?.plus(1)
         number.postValue(n)
         viewModelScope.launch(Dispatchers.Default) {
-            pokeListLiveData.postValue(useCase.getList("pokedex${number.value}.json"))
+            pokeListLiveData.postValue(useCase.getList("pokedex$n.json"))
         }
     }
 }
