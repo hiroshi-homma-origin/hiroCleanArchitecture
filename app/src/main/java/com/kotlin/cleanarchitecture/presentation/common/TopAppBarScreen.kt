@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.koduok.compose.glideimage.GlideImage
 import com.kotlin.cleanarchitecture.R
-import com.kotlin.cleanarchitecture.state.PokeState.number
+import com.kotlin.cleanarchitecture.state.PokeDelegate.number
 
 @Composable
 fun TopAppBarScreen(

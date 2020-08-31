@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.kotlin.cleanarchitecture.R
-import com.kotlin.cleanarchitecture.state.PokeState.rootViewModel
+import com.kotlin.cleanarchitecture.state.PokeDelegate.rootViewModel
 
 @Composable
 fun FloatingActionButtonScreen() {

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
-import com.kotlin.cleanarchitecture.state.PokeState
+import com.kotlin.cleanarchitecture.state.PokeDelegate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,7 +14,7 @@ class RootActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        PokeState.rootViewModel = rootViewModel
+        PokeDelegate.rootViewModel = rootViewModel
         setContent { RootScreen() }
     }
 }

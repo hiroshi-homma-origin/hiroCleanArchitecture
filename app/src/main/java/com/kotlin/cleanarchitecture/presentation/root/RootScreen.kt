@@ -13,7 +13,7 @@ import com.kotlin.cleanarchitecture.presentation.common.DrawerContentsScreen
 import com.kotlin.cleanarchitecture.presentation.common.FloatingActionButtonScreen
 import com.kotlin.cleanarchitecture.presentation.common.TopAppBarScreen
 import com.kotlin.cleanarchitecture.presentation.home.HomeScreen
-import com.kotlin.cleanarchitecture.state.PokeState.isFloatingActionButton
+import com.kotlin.cleanarchitecture.state.PokeDelegate.isFloatingActionButton
 
 @Composable
 fun RootScreen() {

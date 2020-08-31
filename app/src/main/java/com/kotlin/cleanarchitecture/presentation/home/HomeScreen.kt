@@ -24,9 +24,9 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.koduok.compose.glideimage.GlideImage
 import com.kotlin.cleanarchitecture.R
-import com.kotlin.cleanarchitecture.state.PokeState.isFloatingActionButton
-import com.kotlin.cleanarchitecture.state.PokeState.number
-import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
+import com.kotlin.cleanarchitecture.state.PokeDelegate.isFloatingActionButton
+import com.kotlin.cleanarchitecture.state.PokeDelegate.number
+import com.kotlin.cleanarchitecture.state.PokeDelegate.pokeListLiveData
 import com.kotlin.project.data.model.response.PokeList
 
 @Composable

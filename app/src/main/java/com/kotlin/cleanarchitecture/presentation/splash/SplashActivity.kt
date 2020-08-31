@@ -9,7 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.setContent
 import com.kotlin.cleanarchitecture.presentation.root.RootActivity
-import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
+import com.kotlin.cleanarchitecture.state.PokeDelegate.pokeListLiveData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

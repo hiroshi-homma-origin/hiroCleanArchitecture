@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.kotlin.cleanarchitecture.presentation.root.RootViewModel
 import com.kotlin.project.data.model.response.PokeList
 
-object PokeState {
+object PokeDelegate {
     // LiveData
     val pokeListLiveData: MutableLiveData<List<PokeList>> = MutableLiveData()
     val isFloatingActionButton: MutableLiveData<Boolean> = MutableLiveData()
@@ -14,5 +14,5 @@ object PokeState {
     lateinit var rootViewModel: RootViewModel
 
     // Variable
-//    const val InitialNumber = 0
+    const val maxJsonNumber = 44
 }
