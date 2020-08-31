@@ -17,7 +17,8 @@ class RootViewModel @ViewModelInject constructor(
     var n = 0
 
     fun prevData() {
-        n = if (n == 0) { maxJsonNumber
+        n = if (n == 0) {
+            maxJsonNumber
         } else { number.value?.minus(1)!! }
         number.postValue(n)
         viewModelScope.launch(Dispatchers.Default) {
@@ -26,7 +27,8 @@ class RootViewModel @ViewModelInject constructor(
     }
 
     fun nextData() {
-        n = if (n > maxJsonNumber -1) { 0
+        n = if (n > maxJsonNumber - 1) {
+            0
         } else { number.value?.plus(1)!! }
         number.postValue(n)
         viewModelScope.launch(Dispatchers.Default) {
