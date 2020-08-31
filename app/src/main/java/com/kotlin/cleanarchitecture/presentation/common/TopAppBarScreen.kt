@@ -25,7 +25,8 @@ fun TopAppBarScreen(
     scaffoldState: ScaffoldState
 ) {
     val n by number.observeAsState()
-    val navigationIcon = if (showBack) Icons.Default.ArrowBack else Icons.Default.Menu
+    val navigationIcon =
+        if (showBack) Icons.Default.ArrowBack else Icons.Default.Menu
     TopAppBar(
         navigationIcon = {
             IconButton(
