@@ -2,7 +2,6 @@ package com.kotlin.project.domain.usecase
 
 import com.kotlin.project.data.model.response.PokeList
 import com.kotlin.project.domain.repository.GetPokemonListRepository
-import timber.log.Timber
 import javax.inject.Inject
 
 interface GetPokemonListUseCase {
@@ -24,5 +23,4 @@ class GetPokemonListUseCaseImpl @Inject constructor(
             }
         )
     }
-
 }

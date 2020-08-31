@@ -1,6 +1,6 @@
 package com.kotlin.project.data.model
 
-enum class AppScreen(val displayNameString: String) {
+enum class AppScreen(val displayNameString: String){
     Screen1("図巻"),
     Screen2("ランキング"),
     Screen3("バトル"),

@@ -42,6 +42,10 @@ android {
     }
 }
 
+configurations {
+    ktlint
+}
+
 dependencies {
     implementation project(':data')
 
@@ -132,4 +136,23 @@ dependencies {
     androidTestImplementation "androidx.test:runner:1.3.0"
     androidTestImplementation "androidx.room:room-testing:$room_version"
     androidTestImplementation "androidx.work:work-testing:$work_version"
+
+    // Ktlint
+    ktlint "com.pinterest:ktlint:0.37.1"
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    main = "com.pinterest.ktlint.Main"
+    classpath = configurations.ktlint
+    args "src/**/*.kt"
+}
+
+check.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    main = "com.pinterest.ktlint.Main"
+    classpath = configurations.ktlint
+    args "-F", "src/**/*.kt"
 }
