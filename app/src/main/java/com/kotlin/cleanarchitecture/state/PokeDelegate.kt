@@ -9,6 +9,7 @@ object PokeDelegate {
     val pokeListLiveData: MutableLiveData<List<PokeList>> = MutableLiveData()
     val isFloatingActionButton: MutableLiveData<Boolean> = MutableLiveData()
     var number: MutableLiveData<Int> = MutableLiveData()
+    var screenNumber: MutableLiveData<Int> = MutableLiveData()
 
     // ViewModel
     lateinit var rootViewModel: RootViewModel

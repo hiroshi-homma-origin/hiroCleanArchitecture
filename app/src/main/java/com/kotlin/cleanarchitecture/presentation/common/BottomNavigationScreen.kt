@@ -6,21 +6,23 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.ScaffoldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.kotlin.cleanarchitecture.state.PokeDelegate.screenNumber
 import com.kotlin.project.data.model.AppScreen
 
 @Composable
-fun BottomNavigationScreen(scaffoldState: ScaffoldState, bottomIndex: MutableState<Int>) {
+fun BottomNavigationScreen() {
+    val sNumber by screenNumber.observeAsState()
     BottomNavigation(modifier = Modifier.padding(0.dp)) {
         AppScreen.values().mapIndexed { index, list ->
             if (index < 5) {
@@ -30,7 +32,7 @@ fun BottomNavigationScreen(scaffoldState: ScaffoldState, bottomIndex: MutableSta
                             horizontalGravity = Alignment.CenterHorizontally
                         ) {
                             Icon(asset = Icons.Filled.Home)
-                            if (bottomIndex.value == index) {
+                            if (sNumber == index) {
                                 Text(
                                     text = list.displayNameString,
                                     style = TextStyle(
@@ -41,9 +43,9 @@ fun BottomNavigationScreen(scaffoldState: ScaffoldState, bottomIndex: MutableSta
                             }
                         }
                     },
-                    selected = bottomIndex.value == index,
+                    selected = screenNumber.value == index,
                     onSelect = {
-                        bottomIndex.value = index
+                        screenNumber.value = index
                     },
                     alwaysShowLabels = false
                 )

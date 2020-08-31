@@ -31,11 +31,13 @@ import com.kotlin.project.data.model.response.PokeList
 
 @Composable
 fun HomeScreen() {
+    // Background
     Image(
         imageResource(id = R.drawable.bg1),
         modifier = Modifier.fillMaxWidth() + Modifier.fillMaxHeight() +
             Modifier.background(Color(0xFF363636))
     )
+    // Contents
     ScrollableColumn(
         modifier = Modifier.padding(bottom = 60.dp) +
             Modifier.onPositioned {
