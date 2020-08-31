@@ -25,7 +25,7 @@ fun RootScreen() {
         topBar = { TopAppBarScreen(showBack = false, scaffoldState) },
         floatingActionButtonPosition = FabPosition.End,
         floatingActionButton = {
-            if (isFAB!!) FloatingActionButtonScreen(scaffoldState)
+            if (isFAB!!) FloatingActionButtonScreen()
         },
         drawerContent = { DrawerContentsScreen(scaffoldState) },
         bodyContent = { HomeScreen() },

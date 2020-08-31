@@ -4,8 +4,8 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'com.apollographql.apollo'
-    id 'com.google.firebase.crashlytics'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -85,6 +85,20 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0-alpha07"
 
+    // For Google Play Services
+    implementation 'com.google.android.gms:play-services-base:17.4.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
+    implementation 'com.google.android.gms:play-services-analytics:17.0.0'
+
+    // For Firebase
+    implementation 'com.google.firebase:firebase-core:17.5.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:17.5.0'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:17.2.1'
+    implementation 'com.google.firebase:firebase-config:19.2.0'
+    implementation 'com.google.firebase:firebase-iid:20.2.4'
+    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+
     // Hilt
     implementation "com.google.dagger:hilt-android:$google_hilt"
     kapt "com.google.dagger:hilt-android-compiler:$google_hilt"
@@ -120,9 +134,17 @@ dependencies {
     // Third Party Library
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation "dev.chrisbanes.accompanist:accompanist-coil:0.2.0"
+    implementation 'com.github.mvarnagiris:compose-glide-image:0.3.8'
 
     // Ktlint
     ktlint "com.pinterest:ktlint:0.37.1"
+
+    def hyperionVersion = '0.9.27'
+    debugImplementation "com.willowtreeapps.hyperion:hyperion-core:$hyperionVersion"
+    debugImplementation "com.willowtreeapps.hyperion:hyperion-crash:$hyperionVersion"
+    debugImplementation "com.willowtreeapps.hyperion:hyperion-geiger-counter:$hyperionVersion"
+    debugImplementation "com.willowtreeapps.hyperion:hyperion-measurement:$hyperionVersion"
+    debugImplementation "com.willowtreeapps.hyperion:hyperion-timber:$hyperionVersion"
 }
 
 kapt { generateStubs = true }

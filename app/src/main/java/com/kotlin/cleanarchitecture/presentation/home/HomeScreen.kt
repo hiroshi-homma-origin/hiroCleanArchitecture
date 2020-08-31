@@ -22,12 +22,12 @@ import androidx.compose.ui.layout.globalPosition
 import androidx.compose.ui.onPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
+import com.koduok.compose.glideimage.GlideImage
 import com.kotlin.cleanarchitecture.R
 import com.kotlin.cleanarchitecture.state.PokeState.isFloatingActionButton
 import com.kotlin.cleanarchitecture.state.PokeState.number
 import com.kotlin.cleanarchitecture.state.PokeState.pokeListLiveData
 import com.kotlin.project.data.model.response.PokeList
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun HomeScreen() {
@@ -61,6 +61,7 @@ fun HomeScreen() {
                 shape = RoundedCornerShape(2.dp),
                 backgroundColor = Color(0xBBFFFFFF)
             ) {
+                7
                 ImageAndContentDivideScreen(number, pokemon)
             }
         }
@@ -72,7 +73,7 @@ fun ImageAndContentDivideScreen(number: String, pokemon: PokeList) {
     Row(
         modifier = Modifier.padding(8.dp)
     ) {
-        CoilImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
+        GlideImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
         Column(
             modifier = Modifier.padding(6.dp)
         ) {

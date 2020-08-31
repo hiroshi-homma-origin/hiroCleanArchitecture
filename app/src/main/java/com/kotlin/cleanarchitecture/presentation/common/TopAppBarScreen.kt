@@ -2,7 +2,6 @@ package com.kotlin.cleanarchitecture.presentation.common
 
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.IconButton
@@ -16,9 +15,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.koduok.compose.glideimage.GlideImage
 import com.kotlin.cleanarchitecture.R
 import com.kotlin.cleanarchitecture.state.PokeState.number
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun TopAppBarScreen(
@@ -39,7 +38,7 @@ fun TopAppBarScreen(
         },
         title = {
             Row {
-                CoilImage(R.drawable.pokedex_logo)
+                GlideImage(R.drawable.pokedex_logo)
                 Text(
                     modifier = Modifier.padding(10.dp),
                     text = n.toString()

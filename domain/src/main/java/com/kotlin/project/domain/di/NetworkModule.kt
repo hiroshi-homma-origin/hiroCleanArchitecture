@@ -23,11 +23,11 @@ internal object NetworkModule {
             .add(KotlinJsonAdapterFactory())
             .build()
         val httpClient = OkHttpClient.Builder()
-            .connectTimeout(BuildConfig.API_CONNECT_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(BuildConfig.API_READ_TIMEOUT, TimeUnit.SECONDS)
-            .addInterceptor(HttpLoggingInterceptor().apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            })
+//            .connectTimeout(BuildConfig.API_CONNECT_TIMEOUT, TimeUnit.SECONDS)
+//            .readTimeout(BuildConfig.API_READ_TIMEOUT, TimeUnit.SECONDS)
+//            .addInterceptor(HttpLoggingInterceptor().apply {
+//                level = HttpLoggingInterceptor.Level.BODY
+//            })
             .build()
         return Retrofit.Builder()
             .baseUrl(BuildConfig.DOMAIN)

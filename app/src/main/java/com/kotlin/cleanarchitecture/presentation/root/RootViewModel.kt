@@ -13,15 +13,24 @@ import kotlinx.coroutines.launch
 class RootViewModel @ViewModelInject constructor(
     @PokemonListUseCase private val useCase: GetPokemonListUseCase
 ) : ViewModel() {
+    var n = 0
     fun prevData() {
-        val n = number.value?.minus(1)
+        n = if (n == 0) {
+            44
+        } else {
+            number.value?.minus(1)!!
+        }
         number.postValue(n)
         viewModelScope.launch(Dispatchers.Default) {
             pokeListLiveData.postValue(useCase.getList("pokedex$n.json"))
         }
     }
     fun nextData() {
-        val n = number.value?.plus(1)
+        n = if (n > 43) {
+            0
+        } else {
+            number.value?.plus(1)!!
+        }
         number.postValue(n)
         viewModelScope.launch(Dispatchers.Default) {
             pokeListLiveData.postValue(useCase.getList("pokedex$n.json"))
