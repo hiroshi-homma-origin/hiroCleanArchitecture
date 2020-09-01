@@ -43,7 +43,7 @@ fun BottomNavigationScreen() {
                             }
                         }
                     },
-                    selected = screenNumber.value == index,
+                    selected = sNumber == index,
                     onSelect = {
                         screenNumber.value = index
                     },

@@ -63,7 +63,6 @@ fun HomeScreen() {
                 shape = RoundedCornerShape(2.dp),
                 backgroundColor = Color(0xBBFFFFFF)
             ) {
-                7
                 ImageAndContentDivideScreen(number, pokemon)
             }
         }
