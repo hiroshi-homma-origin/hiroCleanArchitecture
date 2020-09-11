@@ -39,7 +39,7 @@ fun TopAppBarScreen(
         },
         title = {
             Row {
-                GlideImage(R.drawable.pokedex_logo)
+//                GlideImage(R.drawable.pokedex_logo)
                 Text(
                     modifier = Modifier.padding(10.dp),
                     text = n.toString()

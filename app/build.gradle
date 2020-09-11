@@ -134,7 +134,6 @@ dependencies {
     // Third Party Library
     implementation "com.jakewharton.timber:timber:4.7.1"
     implementation "dev.chrisbanes.accompanist:accompanist-coil:0.2.0"
-    implementation 'com.github.mvarnagiris:compose-glide-image:0.3.8'
 
     // Ktlint
     ktlint "com.pinterest:ktlint:0.37.1"

@@ -74,7 +74,7 @@ fun ImageAndContentDivideScreen(number: String, pokemon: PokeList) {
     Row(
         modifier = Modifier.padding(8.dp)
     ) {
-        GlideImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
+//        GlideImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
         Column(
             modifier = Modifier.padding(6.dp)
         ) {
