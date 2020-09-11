@@ -22,8 +22,8 @@ import androidx.compose.ui.layout.globalPosition
 import androidx.compose.ui.onPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
-import com.koduok.compose.glideimage.GlideImage
 import com.kotlin.cleanarchitecture.R
+import com.kotlin.cleanarchitecture.presentation.common.GlideImage
 import com.kotlin.cleanarchitecture.state.PokeDelegate.isFloatingActionButton
 import com.kotlin.cleanarchitecture.state.PokeDelegate.number
 import com.kotlin.cleanarchitecture.state.PokeDelegate.pokeListLiveData
@@ -74,7 +74,7 @@ fun ImageAndContentDivideScreen(number: String, pokemon: PokeList) {
     Row(
         modifier = Modifier.padding(8.dp)
     ) {
-//        GlideImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
+        GlideImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
         Column(
             modifier = Modifier.padding(6.dp)
         ) {

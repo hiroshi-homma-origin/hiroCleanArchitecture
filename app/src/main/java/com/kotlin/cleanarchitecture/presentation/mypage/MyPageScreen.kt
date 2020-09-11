@@ -35,7 +35,7 @@ fun MyPageScreen() {
     Image(
         imageResource(id = R.drawable.bg1),
         modifier = Modifier.fillMaxWidth() + Modifier.fillMaxHeight() +
-                Modifier.background(Color(0xFF363636))
+            Modifier.background(Color(0xFF363636))
     )
     Column {
         TestAnimation()
@@ -49,13 +49,13 @@ fun TestAnimation() {
     var selectNum by stateFor<Int>(0) { 0 }
     ScrollableColumn(
         modifier = Modifier.padding(bottom = 60.dp) +
-                Modifier.onPositioned {
-                    if (it.globalPosition.y < 220.0f) {
-                        PokeDelegate.isFloatingActionButton.postValue(false)
-                    } else {
-                        PokeDelegate.isFloatingActionButton.postValue(true)
-                    }
+            Modifier.onPositioned {
+                if (it.globalPosition.y < 220.0f) {
+                    PokeDelegate.isFloatingActionButton.postValue(false)
+                } else {
+                    PokeDelegate.isFloatingActionButton.postValue(true)
                 }
+            }
     ) {
         (0..9).map { num ->
             val size = animate(if (visible && selectNum == num) 300.dp else 90.dp)
@@ -64,22 +64,24 @@ fun TestAnimation() {
                 modifier = Modifier.padding(12.dp)
                     .fillMaxWidth()
                     .preferredHeight(size)
-                    .clickable(onClick = {
-                        visible = num != selectNum
-                        selectNum = num
-                        Timber.d("check_data1:$selectNum")
-                        Timber.d("check_data2:$visible")
-                        if (!visible && selectNum == num) {
-                            visible = true
-                            count++
+                    .clickable(
+                        onClick = {
+                            visible = num != selectNum
+                            selectNum = num
+                            Timber.d("check_data1:$selectNum")
+                            Timber.d("check_data2:$visible")
+                            if (!visible && selectNum == num) {
+                                visible = true
+                                count++
+                            }
+                            Timber.d("check_data3:$count")
+                            if (count == 2) {
+                                visible = false
+                                count = 0
+                            }
+                            Timber.d("check_data4:$count")
                         }
-                        Timber.d("check_data3:$count")
-                        if (count == 2) {
-                            visible = false
-                            count = 0
-                        }
-                        Timber.d("check_data4:$count")
-                    }),
+                    ),
                 shape = RoundedCornerShape(2.dp),
                 backgroundColor = Color(0xBBFFFFFF)
             ) {
@@ -98,9 +100,9 @@ fun TestAnimation() {
     }
 }
 
-//@SuppressLint("Range", "Recycle") // keyframe or animate use
-//@Composable
-//fun TestAnimation1() {
+// @SuppressLint("Range", "Recycle") // keyframe or animate use
+// @Composable
+// fun TestAnimation1() {
 //    val sizeState = FloatPropKey()
 //    val dpState = DpPropKey()
 //
@@ -171,4 +173,4 @@ fun TestAnimation() {
 //            drawCircle(Color.Red, state[sizeState])
 //        }
 //    }
-//}
+// }

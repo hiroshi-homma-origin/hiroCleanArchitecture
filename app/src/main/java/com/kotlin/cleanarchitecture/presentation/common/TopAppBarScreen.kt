@@ -15,7 +15,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.koduok.compose.glideimage.GlideImage
 import com.kotlin.cleanarchitecture.R
 import com.kotlin.cleanarchitecture.state.PokeDelegate.number
 
@@ -39,7 +38,7 @@ fun TopAppBarScreen(
         },
         title = {
             Row {
-//                GlideImage(R.drawable.pokedex_logo)
+                GlideImage(R.drawable.pokedex_logo)
                 Text(
                     modifier = Modifier.padding(10.dp),
                     text = n.toString()

@@ -9,7 +9,7 @@ buildscript {
     ext.google_hilt = "2.28.3-alpha"
     ext.androidx_hilt = "1.0.0-SNAPSHOT"
     ext.paging_version = '2.1.2'
-    ext.glide_version = "0.3.8"
+    ext.glide_version = "4.11.0"
 
     repositories {
         jcenter()
