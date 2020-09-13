@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.FrameManager
 import androidx.compose.runtime.onCommit
@@ -16,10 +17,13 @@ import androidx.compose.ui.graphics.asImageAsset
 import androidx.compose.ui.graphics.drawscope.drawCanvas
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.unit.dp
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
+import com.kotlin.cleanarchitecture.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -87,11 +91,20 @@ fun GlideImage(
 
         val theImage = image.value
         val theDrawable = drawable.value
-        if (theImage != null) {
-            Image(asset = theImage)
-        } else if (theDrawable != null) {
-            Canvas(modifier = Modifier.fillMaxSize()) {
-                drawCanvas { canvas, _ -> theDrawable.draw(canvas.nativeCanvas) }
+        when {
+            theImage != null -> {
+                Image(asset = theImage)
+            }
+            theDrawable != null -> {
+                Canvas(modifier = Modifier.fillMaxSize()) {
+                    drawCanvas { canvas, _ -> theDrawable.draw(canvas.nativeCanvas) }
+                }
+            }
+            else -> {
+                Image(
+                    imageResource(id = R.drawable.monster_ball),
+                    modifier = Modifier.size(58.dp)
+                )
             }
         }
     }

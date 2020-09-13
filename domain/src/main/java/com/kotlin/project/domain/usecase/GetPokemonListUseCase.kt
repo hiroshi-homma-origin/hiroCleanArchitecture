@@ -1,26 +1,33 @@
 package com.kotlin.project.domain.usecase
 
+import androidx.lifecycle.MutableLiveData
 import com.kotlin.project.data.model.response.PokeList
 import com.kotlin.project.domain.repository.GetPokemonListRepository
 import javax.inject.Inject
 
 interface GetPokemonListUseCase {
-    suspend fun getList(jsonName: String): List<PokeList>
+    suspend fun getList(jsonName: String)
+    fun getLiveData(): MutableLiveData<List<PokeList>>
 }
 
 class GetPokemonListUseCaseImpl @Inject constructor(
     private val getPokemonListRepository: GetPokemonListRepository
 ) : GetPokemonListUseCase {
-    override suspend fun getList(jsonName: String): List<PokeList> {
+
+    private val pokeLiveData: MutableLiveData<List<PokeList>> = MutableLiveData()
+
+    override suspend fun getList(jsonName: String) {
         runCatching {
             getPokemonListRepository.getPokemonList(jsonName)
         }.fold(
             onSuccess = {
-                return it
+                pokeLiveData.postValue(it)
             },
             onFailure = {
-                return listOf()
+                pokeLiveData.postValue(listOf())
             }
         )
     }
+
+    override fun getLiveData() = pokeLiveData
 }

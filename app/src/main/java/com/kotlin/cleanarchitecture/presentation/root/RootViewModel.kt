@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kotlin.cleanarchitecture.state.PokeDelegate.maxJsonNumber
 import com.kotlin.cleanarchitecture.state.PokeDelegate.number
-import com.kotlin.cleanarchitecture.state.PokeDelegate.pokeListLiveData
 import com.kotlin.project.domain.di.qualifier.PokemonListUseCase
 import com.kotlin.project.domain.usecase.GetPokemonListUseCase
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +21,7 @@ class RootViewModel @ViewModelInject constructor(
         } else { number.value?.minus(1)!! }
         number.postValue(n)
         viewModelScope.launch(Dispatchers.Default) {
-            pokeListLiveData.postValue(useCase.getList("pokedex$n.json"))
+            useCase.getList("pokedex$n.json")
         }
     }
 
@@ -32,7 +31,9 @@ class RootViewModel @ViewModelInject constructor(
         } else { number.value?.plus(1)!! }
         number.postValue(n)
         viewModelScope.launch(Dispatchers.Default) {
-            pokeListLiveData.postValue(useCase.getList("pokedex$n.json"))
+            useCase.getList("pokedex$n.json")
         }
     }
+
+    fun getLiveData() = useCase.getLiveData()
 }

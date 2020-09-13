@@ -9,7 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.platform.setContent
 import com.kotlin.cleanarchitecture.presentation.root.RootActivity
-import com.kotlin.cleanarchitecture.state.PokeDelegate.pokeListLiveData
+import com.kotlin.cleanarchitecture.state.PokeDelegate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +19,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        PokeDelegate.splashViewModel = splashViewModel
         setContent {
             ObservePokeList()
         }
@@ -26,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
 
     @Composable
     fun ObservePokeList() {
-        val list by pokeListLiveData.observeAsState()
+        val list by splashViewModel.getLiveData().observeAsState()
         list?.let {
             val intent = Intent(this, RootActivity::class.java)
             startActivity(intent)

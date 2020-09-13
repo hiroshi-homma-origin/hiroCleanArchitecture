@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,7 +25,8 @@ import com.kotlin.cleanarchitecture.R
 import com.kotlin.cleanarchitecture.presentation.common.GlideImage
 import com.kotlin.cleanarchitecture.state.PokeDelegate.isFloatingActionButton
 import com.kotlin.cleanarchitecture.state.PokeDelegate.number
-import com.kotlin.cleanarchitecture.state.PokeDelegate.pokeListLiveData
+import com.kotlin.cleanarchitecture.state.PokeDelegate.pokeListInitLiveData
+import com.kotlin.cleanarchitecture.state.PokeDelegate.rootViewModel
 import com.kotlin.project.data.model.response.PokeList
 
 @Composable
@@ -48,7 +48,7 @@ fun HomeScreen() {
                 }
             }
     ) {
-        val pokeList by pokeListLiveData.observeAsState()
+        val pokeList = rootViewModel.getLiveData().observeAsState().value ?: pokeListInitLiveData.value
         pokeList?.mapIndexed { index, pokemon ->
             val number = index.plus((number.value!! * 20) + 1).toString().padStart(3, '0')
             Card(
