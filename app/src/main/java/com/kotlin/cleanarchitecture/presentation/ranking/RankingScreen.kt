@@ -25,20 +25,21 @@ fun RankingScreen() {
     // Background
     Image(
         imageResource(id = R.drawable.bg1),
-        modifier = Modifier.fillMaxWidth() + Modifier.fillMaxHeight() +
-            Modifier.background(Color(0xFF363636))
+        modifier = Modifier.fillMaxWidth()
+            .fillMaxHeight()
+            .background(Color(0xFF363636))
     )
     // Contents
     ScrollableColumn(
-        modifier = Modifier.padding(bottom = 60.dp) +
-            Modifier.onPositioned {}
+        modifier = Modifier.padding(bottom = 60.dp)
+            .onPositioned {}
     ) {
         (1..10).mapIndexed { index, i ->
             Card(
-                modifier = Modifier.padding(12.dp) +
-                    Modifier.fillMaxWidth() +
-                    Modifier.preferredHeight(90.dp) +
-                    Modifier.clickable(
+                modifier = Modifier.padding(12.dp)
+                    .fillMaxWidth()
+                    .preferredHeight(90.dp)
+                    .clickable(
                         onClick = {
                             // Todo()
                         }

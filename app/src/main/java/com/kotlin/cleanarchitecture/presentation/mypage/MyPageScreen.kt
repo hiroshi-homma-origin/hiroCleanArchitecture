@@ -34,8 +34,9 @@ fun MyPageScreen() {
     // Background
     Image(
         imageResource(id = R.drawable.bg1),
-        modifier = Modifier.fillMaxWidth() + Modifier.fillMaxHeight() +
-            Modifier.background(Color(0xFF363636))
+        modifier = Modifier.fillMaxWidth()
+            .fillMaxHeight()
+            .background(Color(0xFF363636))
     )
     Column {
         TestAnimation()
@@ -48,8 +49,8 @@ fun TestAnimation() {
     var visible by stateFor<Boolean>(false) { false }
     var selectNum by stateFor<Int>(0) { 0 }
     ScrollableColumn(
-        modifier = Modifier.padding(bottom = 60.dp) +
-            Modifier.onPositioned {
+        modifier = Modifier.padding(bottom = 60.dp)
+            .onPositioned {
                 if (it.globalPosition.y < 220.0f) {
                     PokeDelegate.isFloatingActionButton.postValue(false)
                 } else {
@@ -86,7 +87,7 @@ fun TestAnimation() {
                 backgroundColor = Color(0xBBFFFFFF)
             ) {
                 Column(
-                    horizontalGravity = Alignment.Start
+                    horizontalAlignment = Alignment.Start
                 ) {
                     Canvas(
                         modifier = Modifier.padding(padding)
@@ -99,78 +100,3 @@ fun TestAnimation() {
         }
     }
 }
-
-// @SuppressLint("Range", "Recycle") // keyframe or animate use
-// @Composable
-// fun TestAnimation1() {
-//    val sizeState = FloatPropKey()
-//    val dpState = DpPropKey()
-//
-//    val initState = stateFor<String>("A") { "A" }
-//    val toState = stateFor<String>("B") { "B" }
-//
-//    val definition = transitionDefinition<String> {
-//        state("A") {
-//            this[sizeState] = 10f
-//            this[dpState] = 0.dp
-//        }
-//        state("B") {
-//            this[sizeState] = 200f
-//            this[dpState] = 100.dp
-//        }
-//
-//        transition(fromState = "A", toState = "B") {
-//            // tween
-//            sizeState using tween(
-//                durationMillis = 600,
-//                easing = LinearEasing
-//            )
-//            dpState using keyframes {
-//                0.dp at 0 with LinearEasing
-//                100.dp at 100 with LinearOutSlowInEasing
-//                50.dp at 150
-//            }
-//        }
-//        transition(fromState = "B", toState = "A") {
-//            // tween
-//            sizeState using tween(
-//                durationMillis = 600,
-//                easing = LinearEasing
-//            )
-//            dpState using keyframes {
-//                50.dp at 0 with LinearEasing
-//                100.dp at 100 with LinearOutSlowInEasing
-//                0.dp at 150
-//            }
-//        }
-//    }
-//
-//    val state = transition(
-//        definition = definition,
-//        initState = initState.value,
-//        toState = toState.value
-//    )
-//
-//    Row {
-//        Button(
-//            onClick = {
-//                if (toState.value == "A") {
-//                    initState.value = "A"
-//                    toState.value = "B"
-//                } else {
-//                    initState.value = "B"
-//                    toState.value = "A"
-//                }
-//            },
-//            modifier = Modifier.padding(16.dp)
-//        ) {
-//            Text("Animate!")
-//        }
-//
-//        Canvas(
-//            modifier = Modifier.padding(30.dp)
-//        ) {
-//            drawCircle(Color.Red, state[sizeState])
-//        }
-//    }
-// }

@@ -54,7 +54,7 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
                 content = {
                     Column(
                         verticalArrangement = Arrangement.Center,
-                        horizontalGravity = Alignment.CenterHorizontally
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(text = list.displayNameString)
                     }

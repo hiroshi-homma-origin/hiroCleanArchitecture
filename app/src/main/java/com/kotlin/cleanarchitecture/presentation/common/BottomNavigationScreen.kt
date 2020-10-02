@@ -29,7 +29,7 @@ fun BottomNavigationScreen() {
                 BottomNavigationItem(
                     icon = {
                         Column(
-                            horizontalGravity = Alignment.CenterHorizontally
+                            horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Icon(asset = Icons.Filled.Home)
                             if (sNumber == index) {
@@ -44,7 +44,7 @@ fun BottomNavigationScreen() {
                         }
                     },
                     selected = sNumber == index,
-                    onSelect = {
+                    onClick = {
                         screenNumber.value = index
                     },
                     alwaysShowLabels = false

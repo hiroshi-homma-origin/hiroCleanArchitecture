@@ -34,13 +34,14 @@ fun HomeScreen() {
     // Background
     Image(
         imageResource(id = R.drawable.bg1),
-        modifier = Modifier.fillMaxWidth() + Modifier.fillMaxHeight() +
-            Modifier.background(Color(0xFF363636))
+        modifier = Modifier.fillMaxWidth()
+            .fillMaxHeight()
+            .background(Color(0xFF363636))
     )
     // Contents
     ScrollableColumn(
-        modifier = Modifier.padding(bottom = 60.dp) +
-            Modifier.onPositioned {
+        modifier = Modifier.padding(bottom = 60.dp)
+            .onPositioned {
                 if (it.globalPosition.y < 220.0f) {
                     isFloatingActionButton.postValue(false)
                 } else {
@@ -52,10 +53,10 @@ fun HomeScreen() {
         pokeList?.mapIndexed { index, pokemon ->
             val number = index.plus((number.value!! * 20) + 1).toString().padStart(3, '0')
             Card(
-                modifier = Modifier.padding(12.dp) +
-                    Modifier.fillMaxWidth() +
-                    Modifier.preferredHeight(90.dp) +
-                    Modifier.clickable(
+                modifier = Modifier.padding(12.dp)
+                    .fillMaxWidth()
+                    .preferredHeight(90.dp)
+                    .clickable(
                         onClick = {
                             // Todo()
                         }

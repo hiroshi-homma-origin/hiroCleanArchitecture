@@ -106,7 +106,7 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:$androidx_hilt"
 
     // Jetpack Compose
-    implementation "androidx.compose:compose-compiler:$compose_version"
+    implementation "androidx.compose.compiler:compiler:$compose_version"
     implementation "androidx.compose.runtime:runtime:$compose_version"
     implementation "androidx.compose.runtime:runtime-dispatch:$compose_version"
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"

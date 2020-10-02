@@ -30,8 +30,9 @@ fun SearchScreen() {
     // Background
     Image(
         imageResource(id = R.drawable.bg1),
-        modifier = Modifier.fillMaxWidth() + Modifier.fillMaxHeight() +
-            Modifier.background(Color(0xFF363636))
+        modifier = Modifier.fillMaxWidth()
+            .fillMaxHeight()
+            .background(Color(0xFF363636))
     )
     // Contents
     HandleTextFieldChanges()
@@ -61,9 +62,9 @@ fun HandleTextFieldChanges() {
                     tint = Color.White
                 )
             },
-            modifier = Modifier.fillMaxWidth() +
-                Modifier.height(50.dp) +
-                Modifier.padding(0.dp),
+            modifier = Modifier.fillMaxWidth()
+                .height(50.dp)
+                .padding(0.dp),
             onValueChange = { state.value = it },
             label = {
                 Text(
