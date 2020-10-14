@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEachIndexed
 import com.kotlin.cleanarchitecture.state.PokeDelegate
 import com.kotlin.cleanarchitecture.state.PokeDelegate.screenNumber
-import com.kotlin.project.data.model.AppScreen
 import com.kotlin.project.data.model.appScreenList
 
 @Composable

@@ -1,6 +1,5 @@
 package com.kotlin.cleanarchitecture.presentation.root
 
-import androidx.compose.animation.Crossfade
 import androidx.compose.material.FabPosition
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
@@ -34,13 +33,13 @@ fun RootScreen() {
         drawerContent = { DrawerContentsScreen(scaffoldState) },
         bodyContent = {
 //            Crossfade(current = screenNumber) {
-                when (screenNumber) {
-                    1 -> RankingScreen()
-                    2 -> BattleScreen()
-                    3 -> SearchScreen()
-                    4 -> MyPageScreen()
-                    else -> HomeScreen()
-                }
+            when (screenNumber) {
+                1 -> RankingScreen()
+                2 -> BattleScreen()
+                3 -> SearchScreen()
+                4 -> MyPageScreen()
+                else -> HomeScreen()
+            }
 //            }
         },
         bottomBar = { BottomNavigationScreen() }
