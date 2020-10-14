@@ -10,6 +10,7 @@ buildscript {
     ext.androidx_hilt = "1.0.0-SNAPSHOT"
     ext.paging_version = '2.1.2'
     ext.glide_version = "4.11.0"
+    ext.hyperionVersion = '0.9.27'
 
     repositories {
         jcenter()
@@ -22,10 +23,10 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.0-alpha13'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:4.3.3'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.2.1'
+        classpath 'com.google.gms:google-services:4.3.4'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'
         classpath "gradle.plugin.com.github.konifar.gradle:plugin:0.3.3"
-        classpath 'com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta09'
+        classpath 'com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta10'
         classpath 'com.apollographql.apollo:apollo-gradle-plugin:2.2.1'
         classpath "com.google.dagger:hilt-android-gradle-plugin:$google_hilt"
     }

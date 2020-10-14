@@ -27,7 +27,7 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
     val sNumber by PokeDelegate.screenNumber.observeAsState()
     Column {
         Button(
-            modifier = Modifier.gravity(Alignment.CenterHorizontally)
+            modifier = Modifier.align(Alignment.CenterHorizontally)
                 .padding(top = 16.dp, bottom = 16.dp),
             onClick = { scaffoldState.drawerState.close() },
             content = { Text("Close Drawer") }

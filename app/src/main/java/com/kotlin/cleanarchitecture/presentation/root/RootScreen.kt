@@ -33,7 +33,7 @@ fun RootScreen() {
         },
         drawerContent = { DrawerContentsScreen(scaffoldState) },
         bodyContent = {
-            Crossfade(current = screenNumber) {
+//            Crossfade(current = screenNumber) {
                 when (screenNumber) {
                     1 -> RankingScreen()
                     2 -> BattleScreen()
@@ -41,7 +41,7 @@ fun RootScreen() {
                     4 -> MyPageScreen()
                     else -> HomeScreen()
                 }
-            }
+//            }
         },
         bottomBar = { BottomNavigationScreen() }
     )

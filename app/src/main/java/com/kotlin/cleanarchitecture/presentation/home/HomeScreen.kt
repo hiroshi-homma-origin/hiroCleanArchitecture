@@ -55,7 +55,7 @@ fun HomeScreen() {
             Card(
                 modifier = Modifier.padding(12.dp)
                     .fillMaxWidth()
-                    .preferredHeight(90.dp)
+                    .preferredHeight(100.dp)
                     .clickable(
                         onClick = {
                             // Todo()
