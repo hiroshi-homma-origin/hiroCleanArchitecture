@@ -25,7 +25,7 @@ import com.kotlin.project.data.model.appScreenList
 fun BottomNavigationScreen() {
     val sNumber by screenNumber.observeAsState()
     BottomNavigation(modifier = Modifier.padding(0.dp)) {
-        appScreenList.fastForEachIndexed { index, list ->
+        appScreenList.fastForEachIndexed { index, screenName ->
             if (index < 5) {
                 BottomNavigationItem(
                     icon = {
@@ -35,7 +35,7 @@ fun BottomNavigationScreen() {
                             Icon(asset = Icons.Filled.Home)
                             if (sNumber == index) {
                                 Text(
-                                    text = list[index].displayNameString,
+                                    text = screenName,
                                     style = TextStyle(
                                         fontFamily = FontFamily.Monospace,
                                         fontSize = 8.sp

@@ -19,13 +19,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEachIndexed
-import com.kotlin.cleanarchitecture.state.PokeDelegate
 import com.kotlin.cleanarchitecture.state.PokeDelegate.screenNumber
 import com.kotlin.project.data.model.appScreenList
+import timber.log.Timber
 
 @Composable
 fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
-    val sNumber by PokeDelegate.screenNumber.observeAsState()
+    val sNumber by screenNumber.observeAsState()
     Column {
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -33,7 +33,8 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
             onClick = { scaffoldState.drawerState.close() },
             content = { Text("Close Drawer") }
         )
-        appScreenList.fastForEachIndexed { index, list ->
+        Timber.d("check_data:$appScreenList")
+        appScreenList.fastForEachIndexed { index, screenName ->
             val color = if (sNumber == index) {
                 Pair(Color.Gray, Color.White)
             } else {
@@ -57,7 +58,7 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(text = list[index].displayNameString)
+                        Text(text = screenName)
                     }
                 }
             )

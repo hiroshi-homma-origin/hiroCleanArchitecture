@@ -35,7 +35,7 @@ fun RankingScreen() {
         modifier = Modifier.padding(bottom = 60.dp)
             .onPositioned {}
     ) {
-        sequenceOf(1..10).toList().fastForEach { i ->
+        (0..10).forEach { i ->
             Card(
                 modifier = Modifier.padding(12.dp)
                     .fillMaxWidth()
