@@ -18,6 +18,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.onPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.fastForEach
+import androidx.compose.ui.util.fastForEachIndexed
 import com.kotlin.cleanarchitecture.R
 
 @Composable
@@ -34,7 +36,7 @@ fun RankingScreen() {
         modifier = Modifier.padding(bottom = 60.dp)
             .onPositioned {}
     ) {
-        (1..10).mapIndexed { index, i ->
+        sequenceOf(1..10).toList().fastForEach { i ->
             Card(
                 modifier = Modifier.padding(12.dp)
                     .fillMaxWidth()

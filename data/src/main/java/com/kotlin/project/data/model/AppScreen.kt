@@ -8,3 +8,5 @@ enum class AppScreen(val displayNameString: String){
     Screen5("マイページ"),
     Screen6("オプション1")
 }
+
+val appScreenList = sequenceOf(AppScreen.values()).toList()

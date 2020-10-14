@@ -18,9 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.fastForEachIndexed
 import com.kotlin.cleanarchitecture.state.PokeDelegate
 import com.kotlin.cleanarchitecture.state.PokeDelegate.screenNumber
 import com.kotlin.project.data.model.AppScreen
+import com.kotlin.project.data.model.appScreenList
 
 @Composable
 fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
@@ -32,7 +34,7 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
             onClick = { scaffoldState.drawerState.close() },
             content = { Text("Close Drawer") }
         )
-        AppScreen.values().mapIndexed { index, list ->
+        appScreenList.fastForEachIndexed { index, list ->
             val color = if (sNumber == index) {
                 Pair(Color.Gray, Color.White)
             } else {
@@ -56,7 +58,7 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(text = list.displayNameString)
+                        Text(text = list[index].displayNameString)
                     }
                 }
             )

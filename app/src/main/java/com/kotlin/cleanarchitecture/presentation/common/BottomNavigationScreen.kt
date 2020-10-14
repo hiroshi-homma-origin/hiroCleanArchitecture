@@ -17,14 +17,16 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.util.fastForEachIndexed
 import com.kotlin.cleanarchitecture.state.PokeDelegate.screenNumber
 import com.kotlin.project.data.model.AppScreen
+import com.kotlin.project.data.model.appScreenList
 
 @Composable
 fun BottomNavigationScreen() {
     val sNumber by screenNumber.observeAsState()
     BottomNavigation(modifier = Modifier.padding(0.dp)) {
-        AppScreen.values().mapIndexed { index, list ->
+        appScreenList.fastForEachIndexed { index, list ->
             if (index < 5) {
                 BottomNavigationItem(
                     icon = {
@@ -34,7 +36,7 @@ fun BottomNavigationScreen() {
                             Icon(asset = Icons.Filled.Home)
                             if (sNumber == index) {
                                 Text(
-                                    text = list.displayNameString,
+                                    text = list[index].displayNameString,
                                     style = TextStyle(
                                         fontFamily = FontFamily.Monospace,
                                         fontSize = 8.sp

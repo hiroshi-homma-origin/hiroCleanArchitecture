@@ -24,7 +24,7 @@ class GetPokemonListUseCaseImpl @Inject constructor(
                 pokeLiveData.postValue(it)
             },
             onFailure = {
-                pokeLiveData.postValue(listOf())
+                pokeLiveData.postValue(emptySequence<PokeList>().toList())
             }
         )
     }

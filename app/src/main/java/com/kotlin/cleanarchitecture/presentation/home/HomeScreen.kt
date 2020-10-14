@@ -21,6 +21,8 @@ import androidx.compose.ui.layout.globalPosition
 import androidx.compose.ui.onPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.util.fastForEachIndexed
+import androidx.compose.ui.util.format
 import com.kotlin.cleanarchitecture.R
 import com.kotlin.cleanarchitecture.presentation.common.GlideImage
 import com.kotlin.cleanarchitecture.state.PokeDelegate.isFloatingActionButton
@@ -50,8 +52,8 @@ fun HomeScreen() {
             }
     ) {
         val pokeList = rootViewModel.getLiveData().observeAsState().value ?: pokeListInitLiveData.value
-        pokeList?.mapIndexed { index, pokemon ->
-            val number = index.plus((number.value!! * 20) + 1).toString().padStart(3, '0')
+        pokeList?.fastForEachIndexed { index, pokemon ->
+            val number = "%03d".format(index.plus((number.value!! * 20) + 1))
             Card(
                 modifier = Modifier.padding(12.dp)
                     .fillMaxWidth()

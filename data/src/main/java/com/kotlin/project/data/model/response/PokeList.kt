@@ -6,6 +6,6 @@ import com.kotlin.project.data.model.Name
 data class PokeList(
     var id: Int = 0,
     var name: Name,
-    var type: List<String> = listOf(),
+    var type: List<String> = emptySequence<String>().toList(),
     var base: Base
 )

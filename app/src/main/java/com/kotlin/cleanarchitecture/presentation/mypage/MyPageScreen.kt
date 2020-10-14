@@ -58,7 +58,7 @@ fun TestAnimation() {
                 }
             }
     ) {
-        (0..9).map { num ->
+        (0..9).forEach { num ->
             val size = animate(if (visible && selectNum == num) 300.dp else 90.dp)
             val padding = animate(if (visible && selectNum == num) 35.dp else 0.dp)
             Card(
