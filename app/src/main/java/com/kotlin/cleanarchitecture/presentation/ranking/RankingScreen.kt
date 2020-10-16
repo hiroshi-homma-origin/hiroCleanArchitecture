@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.onPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.fastForEach
 import com.kotlin.cleanarchitecture.R
 
 @Composable

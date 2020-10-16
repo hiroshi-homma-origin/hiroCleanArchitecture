@@ -2,7 +2,7 @@ package com.kotlin.project.data.model
 
 import com.squareup.moshi.Json
 
-class Base (
+class Base(
     @Json(name = "hp") var hp: Int = 0,
     @Json(name = "attack") var attack: Int = 0,
     @Json(name = "defense") var defense: Int = 0,
