@@ -22,7 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.globalPosition
-import androidx.compose.ui.onPositioned
+import androidx.compose.ui.onGloballyPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.kotlin.cleanarchitecture.R
@@ -50,7 +50,7 @@ fun TestAnimation() {
     var selectNum by stateFor<Int>(0) { 0 }
     ScrollableColumn(
         modifier = Modifier.padding(bottom = 60.dp)
-            .onPositioned {
+            .onGloballyPositioned {
                 if (it.globalPosition.y < 220.0f) {
                     PokeDelegate.isFloatingActionButton.postValue(false)
                 } else {

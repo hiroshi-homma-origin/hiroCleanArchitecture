@@ -18,7 +18,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.globalPosition
-import androidx.compose.ui.onPositioned
+import androidx.compose.ui.onGloballyPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEachIndexed
@@ -43,7 +43,7 @@ fun HomeScreen() {
     // Contents
     ScrollableColumn(
         modifier = Modifier.padding(bottom = 60.dp)
-            .onPositioned {
+            .onGloballyPositioned {
                 if (it.globalPosition.y < 220.0f) {
                     isFloatingActionButton.postValue(false)
                 } else {
