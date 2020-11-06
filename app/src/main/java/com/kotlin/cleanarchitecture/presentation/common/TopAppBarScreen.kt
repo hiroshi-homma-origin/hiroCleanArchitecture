@@ -1,6 +1,6 @@
 package com.kotlin.cleanarchitecture.presentation.common
 
-import androidx.compose.foundation.Icon
+import androidx.compose.material.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
