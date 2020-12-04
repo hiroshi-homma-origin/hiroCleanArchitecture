@@ -42,10 +42,10 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
             }
             Card(
                 shape = RoundedCornerShape(4.dp),
-                modifier = Modifier.padding(8.dp) +
-                    Modifier.fillMaxWidth() +
-                    Modifier.preferredHeight(60.dp) +
-                    Modifier.clickable(
+                modifier = Modifier.padding(8.dp)
+                    .fillMaxWidth()
+                    .preferredHeight(60.dp)
+                    .clickable(
                         onClick = {
                             scaffoldState.drawerState.close()
                             screenNumber.postValue(index)

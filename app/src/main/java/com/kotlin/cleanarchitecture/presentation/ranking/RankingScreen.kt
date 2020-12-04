@@ -14,7 +14,6 @@ import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.onGloballyPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import com.kotlin.cleanarchitecture.R
@@ -31,7 +30,6 @@ fun RankingScreen() {
     // Contents
     ScrollableColumn(
         modifier = Modifier.padding(bottom = 60.dp)
-            .onGloballyPositioned {}
     ) {
         (0..10).forEach { i ->
             Card(

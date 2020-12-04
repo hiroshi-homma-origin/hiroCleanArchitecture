@@ -1,6 +1,5 @@
 package com.kotlin.cleanarchitecture.presentation.common
 
-import androidx.compose.material.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -32,7 +31,7 @@ fun BottomNavigationScreen() {
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            Icon(asset = Icons.Filled.Home)
+//                            Icon(asset = Icons.Filled.Home)
                             if (sNumber == index) {
                                 Text(
                                     text = screenName,

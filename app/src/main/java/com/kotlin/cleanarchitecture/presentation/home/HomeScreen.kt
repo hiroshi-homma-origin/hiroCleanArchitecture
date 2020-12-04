@@ -18,13 +18,11 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.globalPosition
-import androidx.compose.ui.onGloballyPositioned
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEachIndexed
 import androidx.compose.ui.util.format
 import com.kotlin.cleanarchitecture.R
-import com.kotlin.cleanarchitecture.presentation.common.GlideImage
 import com.kotlin.cleanarchitecture.state.PokeDelegate.isFloatingActionButton
 import com.kotlin.cleanarchitecture.state.PokeDelegate.number
 import com.kotlin.cleanarchitecture.state.PokeDelegate.pokeListInitLiveData
@@ -43,13 +41,6 @@ fun HomeScreen() {
     // Contents
     ScrollableColumn(
         modifier = Modifier.padding(bottom = 60.dp)
-            .onGloballyPositioned {
-                if (it.globalPosition.y < 220.0f) {
-                    isFloatingActionButton.postValue(false)
-                } else {
-                    isFloatingActionButton.postValue(true)
-                }
-            }
     ) {
         val pokeList = rootViewModel.getLiveData().observeAsState().value ?: pokeListInitLiveData.value
         pokeList?.fastForEachIndexed { index, pokemon ->
@@ -77,7 +68,6 @@ fun ImageAndContentDivideScreen(number: String, pokemon: PokeList) {
     Row(
         modifier = Modifier.padding(8.dp)
     ) {
-        GlideImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
         Column(
             modifier = Modifier.padding(6.dp)
         ) {
