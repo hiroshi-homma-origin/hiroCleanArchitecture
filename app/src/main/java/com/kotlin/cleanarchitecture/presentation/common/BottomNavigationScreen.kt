@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
@@ -31,7 +32,7 @@ fun BottomNavigationScreen() {
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-//                            Icon(asset = Icons.Filled.Home)
+                            Icon(imageVector = Icons.Filled.Home)
                             if (sNumber == index) {
                                 Text(
                                     text = screenName,
