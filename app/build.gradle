@@ -136,7 +136,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     // Don't Use (Expectations for the future)
 //    implementation 'com.github.mvarnagiris:compose-glide-image:0.3.11'
-//    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.2.1"
+    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.4.1"
 
     // Ktlint
     ktlint "com.pinterest:ktlint:0.37.1"
