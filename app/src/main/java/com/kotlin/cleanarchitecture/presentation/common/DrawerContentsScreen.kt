@@ -31,7 +31,12 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
             modifier = Modifier.align(Alignment.CenterHorizontally)
                 .padding(top = 16.dp, bottom = 16.dp),
             onClick = { scaffoldState.drawerState.close() },
-            content = { Text("Close Drawer") }
+            content = {
+                Text(
+                    text = "Close Drawer",
+                    color = Color.White
+                )
+            }
         )
         Timber.d("check_data:$appScreenList")
         appScreenList.fastForEachIndexed { index, screenName ->
@@ -58,7 +63,10 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(text = screenName)
+                        Text(
+                            text = screenName,
+                            color = color.second
+                        )
                     }
                 }
             )

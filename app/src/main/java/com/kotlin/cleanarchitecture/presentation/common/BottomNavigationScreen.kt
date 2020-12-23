@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
@@ -39,7 +40,8 @@ fun BottomNavigationScreen() {
                                     style = TextStyle(
                                         fontFamily = FontFamily.Monospace,
                                         fontSize = 8.sp
-                                    )
+                                    ),
+                                    color = Color(0xBBFFFFFF)
                                 )
                             }
                         }
