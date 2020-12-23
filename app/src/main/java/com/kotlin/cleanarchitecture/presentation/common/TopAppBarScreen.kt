@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.kotlin.cleanarchitecture.R
 import com.kotlin.cleanarchitecture.state.PokeDelegate.number
@@ -46,7 +47,8 @@ fun TopAppBarScreen(
                 CoilImage(R.drawable.pokedex_logo)
                 Text(
                     modifier = Modifier.padding(10.dp),
-                    text = n.toString()
+                    text = n.toString(),
+                    color = Color(0xBBFFFFFF)
                 )
             }
         }
