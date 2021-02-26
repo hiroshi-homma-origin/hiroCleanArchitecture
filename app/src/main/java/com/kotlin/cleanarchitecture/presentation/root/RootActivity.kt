@@ -1,9 +1,9 @@
 package com.kotlin.cleanarchitecture.presentation.root
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.platform.setContent
 import com.kotlin.cleanarchitecture.state.PokeDelegate
 import dagger.hilt.android.AndroidEntryPoint
 

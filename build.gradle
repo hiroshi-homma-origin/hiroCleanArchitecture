@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = '1.4.21'
-    ext.compose_version = '1.0.0-alpha09'
+    ext.kotlin_version = '1.4.30'
+    ext.compose_version = '1.0.0-beta01'
     ext.room_version = "2.2.5"
     ext.work_version = "2.4.0"
     ext.retrofitVersion = "2.9.0"
@@ -13,7 +13,6 @@ buildscript {
     ext.hyperionVersion = '0.9.27'
 
     repositories {
-        jcenter()
         google()
         mavenCentral()
         maven { url "https://jitpack.io" }
@@ -21,22 +20,22 @@ buildscript {
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.0-alpha15'
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha08'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:4.3.4'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.3.0'
+        classpath 'com.google.gms:google-services:4.3.5'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.5.0'
         classpath "gradle.plugin.com.github.konifar.gradle:plugin:0.3.3"
         classpath 'com.android.tools.build.jetifier:jetifier-processor:1.0.0-beta10'
-        classpath 'com.apollographql.apollo:apollo-gradle-plugin:2.2.1'
+        classpath 'com.apollographql.apollo:apollo-gradle-plugin:2.4.5'
         classpath "com.google.dagger:hilt-android-gradle-plugin:$google_hilt"
     }
 }
 
 allprojects {
     repositories {
-        jcenter()
         google()
         mavenCentral()
+        maven { url "https://kotlin.bintray.com/kotlinx" }
         maven { url "https://jitpack.io" }
         maven { url 'http://dl.bintray.com/apollographql/android' }
         maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }

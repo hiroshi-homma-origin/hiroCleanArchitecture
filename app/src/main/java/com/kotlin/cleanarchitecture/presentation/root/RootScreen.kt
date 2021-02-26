@@ -31,7 +31,7 @@ fun RootScreen() {
             if (isFAB!! && screenNumber == 0) FloatingActionButtonScreen()
         },
         drawerContent = { DrawerContentsScreen(scaffoldState) },
-        bodyContent = {
+        content = {
             when (screenNumber) {
                 1 -> RankingScreen()
                 2 -> BattleScreen()

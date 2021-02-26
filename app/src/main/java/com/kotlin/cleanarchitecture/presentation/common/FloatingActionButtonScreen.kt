@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.kotlin.cleanarchitecture.R
 import com.kotlin.cleanarchitecture.state.PokeDelegate.rootViewModel
@@ -28,7 +28,8 @@ fun FloatingActionButtonScreen() {
             }
         ) {
             Image(
-                imageResource(id = R.drawable.monster_ball),
+                painter = painterResource(R.drawable.monster_ball),
+                contentDescription = null,
                 modifier = Modifier.size(58.dp)
             )
         }
@@ -40,7 +41,8 @@ fun FloatingActionButtonScreen() {
             }
         ) {
             Image(
-                imageResource(id = R.drawable.monster_ball),
+                painter = painterResource(R.drawable.monster_ball),
+                contentDescription = null,
                 modifier = Modifier.size(58.dp)
             )
         }

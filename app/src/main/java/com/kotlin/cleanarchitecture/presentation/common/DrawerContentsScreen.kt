@@ -1,16 +1,16 @@
 package com.kotlin.cleanarchitecture.presentation.common
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.ScaffoldState
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -30,7 +30,7 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
         Button(
             modifier = Modifier.align(Alignment.CenterHorizontally)
                 .padding(top = 16.dp, bottom = 16.dp),
-            onClick = { scaffoldState.drawerState.close() },
+            onClick = { scaffoldState.drawerState.isClosed },
             content = {
                 Text(
                     text = "Close Drawer",
@@ -49,10 +49,10 @@ fun DrawerContentsScreen(scaffoldState: ScaffoldState) {
                 shape = RoundedCornerShape(4.dp),
                 modifier = Modifier.padding(8.dp)
                     .fillMaxWidth()
-                    .preferredHeight(60.dp)
+                    .height(60.dp)
                     .clickable(
                         onClick = {
-                            scaffoldState.drawerState.close()
+                            scaffoldState.drawerState.isClosed
                             screenNumber.postValue(index)
                         }
                     ),

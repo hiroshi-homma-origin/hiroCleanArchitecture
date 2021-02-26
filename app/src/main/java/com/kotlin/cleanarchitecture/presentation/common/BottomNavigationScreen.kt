@@ -1,11 +1,11 @@
 package com.kotlin.cleanarchitecture.presentation.common
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
@@ -33,7 +33,10 @@ fun BottomNavigationScreen() {
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            Icon(imageVector = Icons.Filled.Home)
+                            Icon(
+                                imageVector = Icons.Filled.Home,
+                                contentDescription = null,
+                            )
                             if (sNumber == index) {
                                 Text(
                                     text = screenName,
@@ -50,7 +53,7 @@ fun BottomNavigationScreen() {
                     onClick = {
                         screenNumber.value = index
                     },
-                    alwaysShowLabels = false
+                    alwaysShowLabel = false
                 )
             }
         }

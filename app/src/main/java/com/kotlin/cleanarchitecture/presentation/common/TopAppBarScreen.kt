@@ -1,11 +1,13 @@
 package com.kotlin.cleanarchitecture.presentation.common
 
-import androidx.compose.foundation.Text
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.ScaffoldState
+import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -15,10 +17,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.kotlin.cleanarchitecture.R
 import com.kotlin.cleanarchitecture.state.PokeDelegate.number
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun TopAppBarScreen(
@@ -32,19 +34,22 @@ fun TopAppBarScreen(
         navigationIcon = {
             IconButton(
                 onClick = {
-                    scaffoldState.drawerState.open()
+                    scaffoldState.drawerState.isOpen
                 }
             ) {
-                Icon(navigationIcon)
+                Icon(
+                    imageVector = navigationIcon,
+                    contentDescription = null
+                )
             }
         },
         title = {
             Row {
-//                Image(
-//                    imageResource(id = R.drawable.pokedex_logo),
-//                    modifier = Modifier.width(200.dp)
-//                )
-                CoilImage(R.drawable.pokedex_logo)
+                Image(
+                    painter = painterResource(R.drawable.pokedex_logo),
+                    contentDescription = null,
+                    modifier = Modifier.width(200.dp)
+                )
                 Text(
                     modifier = Modifier.padding(10.dp),
                     text = n.toString(),

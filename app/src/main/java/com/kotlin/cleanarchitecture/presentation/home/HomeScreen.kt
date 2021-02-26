@@ -1,26 +1,26 @@
 package com.kotlin.cleanarchitecture.presentation.home
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.preferredHeight
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEachIndexed
-import androidx.compose.ui.util.format
 import com.kotlin.cleanarchitecture.R
 import com.kotlin.cleanarchitecture.state.PokeDelegate.number
 import com.kotlin.cleanarchitecture.state.PokeDelegate.pokeListInitLiveData
@@ -32,14 +32,16 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 fun HomeScreen() {
     // Background
     Image(
-        imageResource(id = R.drawable.bg1),
+        painter = painterResource(R.drawable.bg1),
+        contentDescription = null,
         modifier = Modifier.fillMaxWidth()
             .fillMaxHeight()
             .background(Color(0xFF363636))
     )
     // Contents
-    ScrollableColumn(
-        modifier = Modifier.padding(bottom = 60.dp)
+    Column(
+        modifier = Modifier.verticalScroll(rememberScrollState())
+            .padding(bottom = 60.dp)
     ) {
         val pokeList = rootViewModel.getLiveData().observeAsState().value ?: pokeListInitLiveData.value
         pokeList?.fastForEachIndexed { index, pokemon ->
@@ -47,7 +49,7 @@ fun HomeScreen() {
             Card(
                 modifier = Modifier.padding(12.dp)
                     .fillMaxWidth()
-                    .preferredHeight(100.dp)
+                    .height(100.dp)
                     .clickable(
                         onClick = {
                             // Todo()
@@ -67,7 +69,10 @@ fun ImageAndContentDivideScreen(number: String, pokemon: PokeList) {
     Row(
         modifier = Modifier.padding(8.dp)
     ) {
-        CoilImage("http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png")
+        CoilImage(
+            data = "http://tk2-246-32569.vs.sakura.ne.jp/images/$number.png",
+            contentDescription = null
+        )
         Column(
             modifier = Modifier.padding(6.dp)
         ) {

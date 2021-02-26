@@ -7,6 +7,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'com.google.firebase.crashlytics'
 }
+apply from: "${rootDir.absolutePath}/ktlint.gradle"
 
 android {
     compileSdkVersion 30
@@ -76,28 +77,30 @@ dependencies {
     implementation project(':domain')
     implementation project(':data')
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation "androidx.core:core-ktx:1.3.2"
-    implementation "androidx.fragment:fragment-ktx:1.2.5"
+    implementation 'androidx.appcompat:appcompat:1.3.0-beta01'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.activity:activity-ktx:1.2.0'
+    implementation 'androidx.core:core-ktx:1.5.0-beta02'
+    implementation "androidx.activity:activity-compose:1.3.0-alpha03"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-reactivestreams-ktx:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0-alpha07"
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams-ktx:2.3.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0"
 
     // For Google Play Services
-    implementation 'com.google.android.gms:play-services-base:17.4.0'
+    implementation 'com.google.android.gms:play-services-base:17.6.0'
     implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
     implementation 'com.google.android.gms:play-services-analytics:17.0.0'
 
     // For Firebase
-    implementation 'com.google.firebase:firebase-core:17.5.0'
-    implementation 'com.google.firebase:firebase-analytics-ktx:17.5.0'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:17.2.1'
-    implementation 'com.google.firebase:firebase-config:19.2.0'
-    implementation 'com.google.firebase:firebase-iid:20.2.4'
-    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+    implementation 'com.google.firebase:firebase-core:18.0.2'
+    implementation 'com.google.firebase:firebase-analytics-ktx:18.0.2'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:17.3.1'
+    implementation 'com.google.firebase:firebase-config:20.0.3'
+    implementation 'com.google.firebase:firebase-iid:21.0.1'
+    implementation 'com.google.firebase:firebase-messaging:21.0.1'
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$google_hilt"
@@ -108,18 +111,14 @@ dependencies {
     // Jetpack Compose
     implementation "androidx.compose.compiler:compiler:$compose_version"
     implementation "androidx.compose.runtime:runtime:$compose_version"
-    implementation "androidx.compose.runtime:runtime-dispatch:$compose_version"
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
-    implementation "androidx.compose.runtime:runtime-saved-instance-state:$compose_version"
     implementation "androidx.compose.foundation:foundation:$compose_version"
-//    implementation "androidx.compose.foundation:foundation-text:$compose_version"
     implementation "androidx.compose.foundation:foundation-layout:$compose_version"
     implementation "androidx.compose.ui:ui-util:$compose_version"
     implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling:$compose_version"
     implementation "androidx.compose.ui:ui-text:$compose_version"
     implementation "androidx.compose.ui:ui-unit:$compose_version"
-    implementation "androidx.compose.ui:ui-geometry:$compose_version"
-//    implementation "androidx.compose.ui:ui-text-android:$compose_version"
     implementation "androidx.compose.ui:ui-geometry:$compose_version"
     implementation "androidx.compose.ui:ui-viewbinding:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
@@ -128,7 +127,6 @@ dependencies {
     implementation "androidx.compose.animation:animation-core:$compose_version"
     implementation "androidx.compose.animation:animation:$compose_version"
     // still being refactoring
-//    implementation "androidx.ui:ui-tooling:$compose_version"
     androidTestImplementation "androidx.ui:ui-test:$compose_version"
 
     // Third Party Library
@@ -136,10 +134,7 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     // Don't Use (Expectations for the future)
 //    implementation 'com.github.mvarnagiris:compose-glide-image:0.3.11'
-    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.4.1"
-
-    // Ktlint
-    ktlint "com.pinterest:ktlint:0.37.1"
+    implementation "dev.chrisbanes.accompanist:accompanist-coil:0.6.0"
 
     debugImplementation "com.willowtreeapps.hyperion:hyperion-core:$hyperionVersion"
     debugImplementation "com.willowtreeapps.hyperion:hyperion-crash:$hyperionVersion"
@@ -152,25 +147,20 @@ kapt { generateStubs = true }
 
 apply plugin: 'com.google.gms.google-services'
 
-task ktlint(type: JavaExec, group: "verification") {
-    description = "Check Kotlin code style."
-    main = "com.pinterest.ktlint.Main"
-    classpath = configurations.ktlint
-    args "src/**/*.kt"
-}
-
-check.dependsOn ktlint
-
-task ktlintFormat(type: JavaExec, group: "formatting") {
-    description = "Fix Kotlin code style deviations."
-    main = "com.pinterest.ktlint.Main"
-    classpath = configurations.ktlint
-    args "-F", "src/**/*.kt"
+// tag::compiler-kotlin[]
+def compiler = javaToolchains.compilerFor {
+    languageVersion = JavaLanguageVersion.of(11)
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
+        // Treat all Kotlin warnings as errors
+        allWarningsAsErrors = true
+        freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
+        // Enable experimental coroutines APIs, including Flow
+        freeCompilerArgs += '-Xopt-in=kotlin.Experimental'
+
+        // Set JVM target to 1.8
         jvmTarget = "1.8"
-        freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
     }
 }
